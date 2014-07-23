@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "TableViewController.h"
+#import "mainViewController.h"
 
 @implementation AppDelegate
 
@@ -20,10 +20,18 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-   
-    TableViewController *tableView = [[TableViewController alloc] init];
-    self.window.rootViewController = tableView;
     
+    mainViewController *mainView = [[mainViewController alloc] init];
+   
+    
+    mainView.title = @"index";
+//       mainView.view.backgroundColor = [UIColor redColor];
+   
+    UITabBarController *tabBar = [[UITabBarController alloc] init];
+    tabBar.viewControllers = @[mainView];
+    
+    
+    self.window.rootViewController = tabBar;
     [self.window makeKeyAndVisible];
     return YES;
 }

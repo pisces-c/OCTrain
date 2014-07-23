@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIImageView *backgrandimg;
+@property (strong, nonatomic) IBOutlet UITextField *textfield;
+@property (strong, nonatomic) IBOutlet UIToolbar *toobar;
 
 @end
