@@ -22,10 +22,9 @@
 		237277B2197EA2C500C501CD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23727796197EA2C500C501CD /* CoreData.framework */; };
 		237277BA197EA2C500C501CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 237277B8197EA2C500C501CD /* InfoPlist.strings */; };
 		237277BC197EA2C500C501CD /* NoSecretTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 237277BB197EA2C500C501CD /* NoSecretTests.m */; };
-		237277CB197EAA1600C501CD /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 237277C9197EAA1600C501CD /* TableViewCell.m */; };
 		23EBAC98197FEC25004917D7 /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EBAC97197FEC25004917D7 /* mainViewController.m */; };
-		23EBAC99197FEF71004917D7 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23EBAC9B197FEF71004917D7 /* TableViewCell.xib */; };
 		23EBACA21980094B004917D7 /* img0.png in Resources */ = {isa = PBXBuildFile; fileRef = 23EBACA11980094B004917D7 /* img0.png */; };
+		23EBACAB198151DF004917D7 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23EBACAA198151DF004917D7 /* TableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,12 +56,11 @@
 		237277B7197EA2C500C501CD /* NoSecretTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NoSecretTests-Info.plist"; sourceTree = "<group>"; };
 		237277B9197EA2C500C501CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		237277BB197EA2C500C501CD /* NoSecretTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoSecretTests.m; sourceTree = "<group>"; };
-		237277C8197EAA1600C501CD /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
-		237277C9197EAA1600C501CD /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		23EBAC96197FEC25004917D7 /* mainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
 		23EBAC97197FEC25004917D7 /* mainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
-		23EBAC9A197FEF71004917D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TableViewCell.xib; sourceTree = "<group>"; };
 		23EBACA11980094B004917D7 /* img0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img0.png; sourceTree = "<group>"; };
+		23EBACA9198151DF004917D7 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		23EBACAA198151DF004917D7 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +128,8 @@
 				237277A2197EA2C500C501CD /* AppDelegate.m */,
 				23EBAC96197FEC25004917D7 /* mainViewController.h */,
 				23EBAC97197FEC25004917D7 /* mainViewController.m */,
-				237277C8197EAA1600C501CD /* TableViewCell.h */,
-				237277C9197EAA1600C501CD /* TableViewCell.m */,
-				23EBAC9B197FEF71004917D7 /* TableViewCell.xib */,
+				23EBACA9198151DF004917D7 /* TableViewCell.h */,
+				23EBACAA198151DF004917D7 /* TableViewCell.m */,
 				237277A7197EA2C500C501CD /* Images.xcassets */,
 				237277A4197EA2C500C501CD /* NoSecret.xcdatamodeld */,
 				23727799197EA2C500C501CD /* Supporting Files */,
@@ -246,7 +243,6 @@
 			files = (
 				23EBACA21980094B004917D7 /* img0.png in Resources */,
 				2372779D197EA2C500C501CD /* InfoPlist.strings in Resources */,
-				23EBAC99197FEF71004917D7 /* TableViewCell.xib in Resources */,
 				237277A8197EA2C500C501CD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,8 +265,8 @@
 				237277A3197EA2C500C501CD /* AppDelegate.m in Sources */,
 				2372779F197EA2C500C501CD /* main.m in Sources */,
 				23EBAC98197FEC25004917D7 /* mainViewController.m in Sources */,
+				23EBACAB198151DF004917D7 /* TableViewCell.m in Sources */,
 				237277A6197EA2C500C501CD /* NoSecret.xcdatamodeld in Sources */,
-				237277CB197EAA1600C501CD /* TableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,14 +303,6 @@
 				237277B9197EA2C500C501CD /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		23EBAC9B197FEF71004917D7 /* TableViewCell.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				23EBAC9A197FEF71004917D7 /* en */,
-			);
-			name = TableViewCell.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
