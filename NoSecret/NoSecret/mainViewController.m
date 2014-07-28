@@ -70,10 +70,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *text = [data objectAtIndex:indexPath.row];
-//    NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16.0], NSFontAttributeName,nil];
-//    CGRect size = [text boundingRectWithSize:CGSizeMake(320, 220) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
-    return 200;
+    NSString *text = [data objectAtIndex:indexPath.row];
+    NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16.0], NSFontAttributeName,nil];
+    CGRect size = [text boundingRectWithSize:CGSizeMake(320, 100220) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+    return size.size.height+45;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -92,13 +92,47 @@
         
     
     //config the cell
-    NSString *text = [data objectAtIndex:indexPath.row];
-    cell.label.text = text;
-    NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:cell.label.font,NSFontAttributeName,nil];
-    CGRect size = [text boundingRectWithSize:CGSizeMake(320, 220) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
     
-    cell.label.frame = size;
     }
+    NSString *text = [data objectAtIndex:indexPath.row];
+    
+    NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:cell.label.font,NSFontAttributeName,nil];
+    CGRect size = [text boundingRectWithSize:CGSizeMake(320, 22000) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+    
+    
+    CGRect lblframe = CGRectMake(0, 0, size.size.width, size.size.height);
+    CGRect imgframe = CGRectMake(0, 0, size.size.width, size.size.height+40);
+    CGRect btnframe = CGRectMake(0, size.size.height, 80, 40);
+    
+    cell.imgview.frame = imgframe;
+    cell.label.textAlignment = NSTextAlignmentNatural;
+    cell.label.frame = lblframe;
+    cell.label.text = text;
+    
+    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    button1.backgroundColor = [UIColor blackColor];
+    button2.backgroundColor = [UIColor blackColor];
+    button3.backgroundColor = [UIColor blackColor];
+    button4.backgroundColor = [UIColor blackColor];
+    
+    button1.frame = CGRectMake(btnframe.origin.x, btnframe.origin.y, 80, 40);
+    button2.frame = CGRectMake(btnframe.origin.x+80, btnframe.origin.y, 80, 40);
+    button3.frame = CGRectMake(btnframe.origin.x+160, btnframe.origin.y, 80, 40);
+    button4.frame = CGRectMake(btnframe.origin.x+240, btnframe.origin.y, 80, 40);
+    
+    [button1 setTitle:@"A" forState:UIControlStateNormal];
+    [button2 setTitle:@"B" forState:UIControlStateNormal];
+    [button3 setTitle:@"C" forState:UIControlStateNormal];
+    [button4 setTitle:@"D" forState:UIControlStateNormal];
+    
+    [cell.imgview addSubview:button1];
+    [cell.imgview addSubview:button2];
+    [cell.imgview addSubview:button3];
+    [cell.imgview addSubview:button4];
     
     return cell;
 }

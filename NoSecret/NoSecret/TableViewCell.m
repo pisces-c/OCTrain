@@ -16,43 +16,43 @@
     if (self) {
         // Initialization code
 
-        self.imgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+        self.imgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
         self.imgview.image = [UIImage imageNamed:@"img0"];
         
-        self.button1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.button3 = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.button4 = [UIButton buttonWithType:UIButtonTypeCustom];
+//        self.button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+//        self.button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+//        self.button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+//        self.button4 = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        self.button1.backgroundColor = [UIColor blackColor];
-        self.button2.backgroundColor = [UIColor blackColor];
-        self.button3.backgroundColor = [UIColor blackColor];
-        self.button4.backgroundColor = [UIColor blackColor];
+//        self.button1.backgroundColor = [UIColor blackColor];
+//        self.button2.backgroundColor = [UIColor blackColor];
+//        self.button3.backgroundColor = [UIColor blackColor];
+//        self.button4.backgroundColor = [UIColor blackColor];
         
-        self.button1.frame = CGRectMake(0, 130, 80, 40);
-        self.button2.frame = CGRectMake(80, 130, 80, 40);
-        self.button3.frame = CGRectMake(160, 130, 80, 40);
-        self.button4.frame = CGRectMake(240, 130, 80, 40);
+//        self.button1.frame = CGRectMake(0, 130, 80, 40);
+//        self.button2.frame = CGRectMake(80, 130, 80, 40);
+//        self.button3.frame = CGRectMake(160, 130, 80, 40);
+//        self.button4.frame = CGRectMake(240, 130, 80, 40);
 
-        [self.button1 setTitle:@"A" forState:UIControlStateNormal];
-        [self.button2 setTitle:@"B" forState:UIControlStateNormal];
-        [self.button3 setTitle:@"C" forState:UIControlStateNormal];
-        [self.button4 setTitle:@"D" forState:UIControlStateNormal];
+//        [self.button1 setTitle:@"A" forState:UIControlStateNormal];
+//        [self.button2 setTitle:@"B" forState:UIControlStateNormal];
+//        [self.button3 setTitle:@"C" forState:UIControlStateNormal];
+//        [self.button4 setTitle:@"D" forState:UIControlStateNormal];
         
         
         self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
         self.label.backgroundColor = [UIColor clearColor];
         self.label.font = [UIFont systemFontOfSize:16.0];
         self.label.lineBreakMode = NSLineBreakByWordWrapping;
-        self.label.textAlignment = NSTextAlignmentJustified;
         self.label.numberOfLines = 0;
+        self.label.textAlignment = NSTextAlignmentLeft;
         
         [self addSubview:self.imgview];
         [self addSubview:self.label];
-        [self addSubview:self.button1];
-        [self addSubview:self.button2];
-        [self addSubview:self.button3];
-        [self addSubview:self.button4];
+//        [self.label addSubview:self.button1];
+//        [self.label addSubview:self.button2];
+//        [self.label addSubview:self.button3];
+//        [self.label addSubview:self.button4];
 
     }
     return self;
