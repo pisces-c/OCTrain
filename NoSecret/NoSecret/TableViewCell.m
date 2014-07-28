@@ -17,7 +17,7 @@
         // Initialization code
 
         self.imgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
-        self.imgview.image = [UIImage imageNamed:@"img0"];
+//        self.imgview.image = [UIImage imageNamed:@"img0"];
         
 //        self.button1 = [UIButton buttonWithType:UIButtonTypeCustom];
 //        self.button2 = [UIButton buttonWithType:UIButtonTypeCustom];

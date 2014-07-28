@@ -11,6 +11,7 @@
 @interface mainViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *data;
+    NSArray *imgdata;
 }
 @property (strong, nonatomic) UIButton *button1;
 @property (strong, nonatomic) UIButton *button2;
