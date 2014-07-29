@@ -17,6 +17,8 @@
         // Initialization code
 
         self.imgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+//        self.controlView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+
 //        self.imgview.image = [UIImage imageNamed:@"img0"];
         
 //        self.button1 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -47,8 +49,13 @@
         self.label.numberOfLines = 0;
         self.label.textAlignment = NSTextAlignmentLeft;
         
+        self.controlLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+        self.controlLabel.backgroundColor = [UIColor whiteColor];
+        
         [self addSubview:self.imgview];
         [self addSubview:self.label];
+        [self addSubview:self.controlLabel];
+//        [self addSubview:self.controlView];
 //        [self.label addSubview:self.button1];
 //        [self.label addSubview:self.button2];
 //        [self.label addSubview:self.button3];

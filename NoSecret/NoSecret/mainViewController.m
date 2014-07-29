@@ -28,12 +28,18 @@
 {
     [super viewDidLoad];
     UIView *TopView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 60)];
-    TopView.backgroundColor = [UIColor grayColor];
-    UIButton *TopButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    TopButton.frame = CGRectMake(0, 0, 60, 60);
-    [TopView addSubview:TopButton];
-    TopButton.backgroundColor = [UIColor blackColor];
+    UILabel *TopLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    TopLable.text = @"首页";
+    TopLable.textColor = [UIColor blackColor];
+    TopLable.textAlignment = NSTextAlignmentCenter;
 
+    
+    UIButton *TopButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    TopButton.frame = CGRectMake(0, 0, 40, 40);
+    [TopButton setImage:[UIImage imageNamed:@"btn_nav_invite@2x"] forState:UIControlStateNormal];
+    
+    [TopView addSubview:TopButton];
+    [TopView addSubview:TopLable];
     
     UITableView *TableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, 320, 470)];
     
@@ -79,7 +85,7 @@
     NSString *text = [data objectAtIndex:indexPath.row];
     NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16.0], NSFontAttributeName,nil];
     CGRect size = [text boundingRectWithSize:CGSizeMake(320, 100220) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
-    return size.size.height+45;
+    return size.size.height+105;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -105,10 +111,9 @@
     NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:cell.label.font,NSFontAttributeName,nil];
     CGRect size = [text boundingRectWithSize:CGSizeMake(320, 22000) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
     
-    
-    CGRect lblframe = CGRectMake(0, 0, size.size.width, size.size.height);
-    CGRect imgframe = CGRectMake(0, 0, size.size.width, size.size.height+40);
-    CGRect btnframe = CGRectMake(0, size.size.height, 80, 40);
+    CGRect imgframe = CGRectMake(0, 0, size.size.width, size.size.height+100);
+    CGRect conframe = CGRectMake(0, imgframe.size.height-40, 320, 40);
+    CGRect lblframe = CGRectMake(0, imgframe.size.height-size.size.height-conframe.size.height, size.size.width, size.size.height);
     
     cell.imgview.frame = imgframe;
     cell.imgview.image = [imgdata objectAtIndex:indexPath.row];
@@ -122,25 +127,28 @@
     UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
     UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    button1.backgroundColor = [UIColor blackColor];
-    button2.backgroundColor = [UIColor blackColor];
-    button3.backgroundColor = [UIColor blackColor];
-    button4.backgroundColor = [UIColor blackColor];
+    button1.backgroundColor = [UIColor whiteColor];
+    button2.backgroundColor = [UIColor whiteColor];
+    button3.backgroundColor = [UIColor whiteColor];
+    button4.backgroundColor = [UIColor whiteColor];
     
-    button1.frame = CGRectMake(btnframe.origin.x, btnframe.origin.y, 80, 40);
-    button2.frame = CGRectMake(btnframe.origin.x+80, btnframe.origin.y, 80, 40);
-    button3.frame = CGRectMake(btnframe.origin.x+160, btnframe.origin.y, 80, 40);
-    button4.frame = CGRectMake(btnframe.origin.x+240, btnframe.origin.y, 80, 40);
+    [button1 setImage:[UIImage imageNamed:@"comment_like_normal@2x"] forState:UIControlStateNormal];
+    [button2 setImage:[UIImage imageNamed:@"list_comment@2x"] forState:UIControlStateNormal];
+    [button3 setImage:[UIImage imageNamed:@"list_private_letter_disable@2x"] forState:UIControlStateNormal];
+    [button4 setImage:[UIImage imageNamed:@"list_more_black@2x"] forState:UIControlStateNormal];
     
-    [button1 setTitle:@"A" forState:UIControlStateNormal];
-    [button2 setTitle:@"B" forState:UIControlStateNormal];
-    [button3 setTitle:@"C" forState:UIControlStateNormal];
-    [button4 setTitle:@"D" forState:UIControlStateNormal];
+    button1.frame = CGRectMake(0, 0, 40, 40);
+    button2.frame = CGRectMake(80, 0, 40, 40);
+    button3.frame = CGRectMake(160, 0, 40, 40);
+    button4.frame = CGRectMake(240, 0, 40, 40);
     
-    [cell.imgview addSubview:button1];
-    [cell.imgview addSubview:button2];
-    [cell.imgview addSubview:button3];
-    [cell.imgview addSubview:button4];
+    cell.controlLabel.frame = conframe;
+    
+    [cell.imgview addSubview:cell.controlLabel];
+    [cell.controlLabel addSubview:button1];
+    [cell.controlLabel addSubview:button2];
+    [cell.controlLabel addSubview:button3];
+    [cell.controlLabel addSubview:button4];
     
     return cell;
 }

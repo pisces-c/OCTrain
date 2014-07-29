@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) UILabel *label;
 @property (strong, nonatomic) UIImageView *imgview;
-
+@property (strong, nonatomic) UILabel *controlLabel;
 
 @end
