@@ -17,6 +17,7 @@
 		231E70951987EBB900BB417A /* list_comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 231E708F1987EBB900BB417A /* list_comment@2x.png */; };
 		231E70961987EBB900BB417A /* list_more_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 231E70901987EBB900BB417A /* list_more_black@2x.png */; };
 		231E70971987EBB900BB417A /* list_private_letter_disable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 231E70911987EBB900BB417A /* list_private_letter_disable@2x.png */; };
+		231E709D19892D1400BB417A /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E709C19892D1400BB417A /* Model.m */; };
 		23727791197EA2C500C501CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23727790197EA2C500C501CD /* Foundation.framework */; };
 		23727793197EA2C500C501CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23727792197EA2C500C501CD /* CoreGraphics.framework */; };
 		23727795197EA2C500C501CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23727794197EA2C500C501CD /* UIKit.framework */; };
@@ -58,6 +59,8 @@
 		231E708F1987EBB900BB417A /* list_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_comment@2x.png"; sourceTree = "<group>"; };
 		231E70901987EBB900BB417A /* list_more_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_more_black@2x.png"; sourceTree = "<group>"; };
 		231E70911987EBB900BB417A /* list_private_letter_disable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_private_letter_disable@2x.png"; sourceTree = "<group>"; };
+		231E709B19892D1400BB417A /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		231E709C19892D1400BB417A /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		2372778D197EA2C500C501CD /* NoSecret.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoSecret.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23727790197EA2C500C501CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		23727792197EA2C500C501CD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -176,6 +179,8 @@
 				23EBAC97197FEC25004917D7 /* mainViewController.m */,
 				23EBACA9198151DF004917D7 /* TableViewCell.h */,
 				23EBACAA198151DF004917D7 /* TableViewCell.m */,
+				231E709B19892D1400BB417A /* Model.h */,
+				231E709C19892D1400BB417A /* Model.m */,
 				237277A7197EA2C500C501CD /* Images.xcassets */,
 				237277A4197EA2C500C501CD /* NoSecret.xcdatamodeld */,
 				23727799197EA2C500C501CD /* Supporting Files */,
@@ -321,6 +326,7 @@
 				237277A3197EA2C500C501CD /* AppDelegate.m in Sources */,
 				2372779F197EA2C500C501CD /* main.m in Sources */,
 				23EBAC98197FEC25004917D7 /* mainViewController.m in Sources */,
+				231E709D19892D1400BB417A /* Model.m in Sources */,
 				23EBACAB198151DF004917D7 /* TableViewCell.m in Sources */,
 				237277A6197EA2C500C501CD /* NoSecret.xcdatamodeld in Sources */,
 			);
