@@ -23,10 +23,16 @@
     }
     return self;
 }
-
+-(void)loadView{
+    [super loadView];//注意 使用loadview 这个方法必须要实现，不然会崩
+    
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //界面初始化尽量写在loadview方法里面
     UIView *TopView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320, 60)];
     UILabel *TopLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
     TopLable.text = @"首页";
@@ -56,7 +62,10 @@
     NSString *str2 = @"明明人在线，明明想说话，还要学隐身；明明很难过，明明很想哭，还要裂嘴笑；明明很孤单，明明很害怕，还要一个人；明明想见面，明明很期待，还要去拒绝；明明心很乱，明明想人陪，还要装沉默；明明舍不得，明明放不下，还要去放手；明明在心里，明明很在乎，还要无所谓！";
     NSString *str3 = @"Active long will be very tired, care about for a long time will crash!----主动久了会很累，在乎久了会崩溃!";
     NSString *str4 = @"可口可乐总裁曾说过：我们每个人都像小丑，玩着五个球。五个球是你的工作、健康、家庭、朋友、灵魂，这五个球只有一个是用橡胶做的，掉下去会弹起来，那就是工作。另外四个球都是用玻璃做的，掉了，就碎了。";
-    data = [NSArray arrayWithObjects:str1,str2,str3,str4, nil];
+    
+    //我要求你使用实体！！！！而不是这个，实体放数组里
+    
+    data = [NSArray arrayWithObjects:str1,str2,str3,str4,str3,str4,str3,str4,str3,str4,str3,str4, nil];
     
     UIImage *img0 = [UIImage imageNamed:@"img0"];
     UIImage *img1 = [UIImage imageNamed:@"img1"];
@@ -106,6 +115,7 @@
     //config the cell
     
     }
+    //cell 这些内容处理 写在你的自定义cell里面
     NSString *text = [data objectAtIndex:indexPath.row];
     
     NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:cell.label.font,NSFontAttributeName,nil];
@@ -141,9 +151,9 @@
     button2.frame = CGRectMake(80, 0, 40, 40);
     button3.frame = CGRectMake(160, 0, 40, 40);
     button4.frame = CGRectMake(240, 0, 40, 40);
-    
     cell.controlLabel.frame = conframe;
     
+    //这个地方一定要注意 每次 滑动的时候 这个里都会走，我不停的滑动，然后cell会不停添加这些控件，会导致 cell里面的控件越来越多。
     [cell.imgview addSubview:cell.controlLabel];
     [cell.controlLabel addSubview:button1];
     [cell.controlLabel addSubview:button2];
