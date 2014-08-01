@@ -13,5 +13,10 @@
 @property (strong, nonatomic) UILabel *label;
 @property (strong, nonatomic) UIImageView *imgview;
 @property (strong, nonatomic) UILabel *controlLabel;
+@property (strong, nonatomic) UIButton *button1;
+@property (strong, nonatomic) UIButton *button2;
+@property (strong, nonatomic) UIButton *button3;
+@property (strong, nonatomic) UIButton *button4;
+
 
 @end

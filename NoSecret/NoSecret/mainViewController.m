@@ -47,6 +47,7 @@
     bottomBar.frame = CGRectMake(0, 530, 320, 40);
     TableView.dataSource = self;
     TableView.delegate = self;
+    
 }
 - (void)viewDidLoad
 {
@@ -101,7 +102,7 @@
     NSString *text = model.str;
     NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16.0], NSFontAttributeName,nil];
     CGRect size = [text boundingRectWithSize:CGSizeMake(320, 100220) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
-    return size.size.height+50;
+    return size.size.height+100;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -112,16 +113,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellname = @"cell";
-    TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellname];
-    if (!cell) {
+    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname];
+//    TableViewCell *cell = (TableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    if (cell==nil) {
         cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellname];
 
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        
-    
+    }
     //config the cell
     
-    }
+    
     //cell 这些内容处理 写在你的自定义cell里面
     Model *model = (Model *)[data objectAtIndex:indexPath.row];
     NSString *text = model.str;
