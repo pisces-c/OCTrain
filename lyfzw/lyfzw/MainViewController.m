@@ -58,15 +58,19 @@
 - (void)clickLoginButton:(id)sender
 {
     LoginViewController *LoginView = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    [self presentViewController:LoginView animated:YES completion:NULL];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:LoginView];
+    
+    [self presentViewController:nav animated:YES completion:NULL];
 
 
 
 }
 - (void)clickRegButton:(id)sender
 {
-    RegViewController *RegView = [[RegViewController alloc]initWithNibName:@"RegViewController" bundle:nil];
-    [self presentViewController:RegView animated:YES completion:NULL];
+    RegViewController *RegView = [[RegViewController alloc] initWithNibName:@"RegViewController" bundle:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:RegView];
+    
+    [self presentViewController:nav animated:YES completion:NULL];
 
 }
 

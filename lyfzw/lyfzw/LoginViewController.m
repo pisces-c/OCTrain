@@ -29,6 +29,17 @@
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem *FinishButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(clickFinishButton:)];
     self.navigationItem.leftBarButtonItem = FinishButton;
+    
+    UIImageView *phoneimg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"User_account_icon@2x.png"]];
+    [phoneimg setFrame:CGRectMake(10, 10, 10, 10)];
+//    [phoneimg drawRect:CGRectMake(10, 10, 10, 10)];
+    _phonenumber.leftView = phoneimg;
+    _phonenumber.leftViewMode = UITextFieldViewModeAlways;
+    UIImageView *psdimg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Pass_Word_Icon@2x.png"]];
+    [psdimg setFrame:CGRectMake(10, 10, 10, 10)];
+    _password.leftView = psdimg;
+    _password.leftViewMode = UITextFieldViewModeAlways;
+
 }
 
 - (void)didReceiveMemoryWarning

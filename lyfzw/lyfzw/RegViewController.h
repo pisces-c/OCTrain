@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegViewController : UINavigationController
+@interface RegViewController : UIViewController
 
 @property (retain ,nonatomic) UITextField *phoneNum;
 @property (retain ,nonatomic) UITextField *pwd;

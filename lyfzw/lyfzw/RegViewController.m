@@ -23,6 +23,7 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,12 +33,10 @@
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(clickBackButton:)];
-    self.navigationController.navigationItem.leftBarButtonItem = BackButton;
+    self.navigationItem.leftBarButtonItem = BackButton;
 
     
-    UIButton *RegButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    RegButton.frame = CGRectMake(20, 100, 300, 40);
-    [self.view addSubview:RegButton];
+    
 }
 
 - (void)didReceiveMemoryWarning

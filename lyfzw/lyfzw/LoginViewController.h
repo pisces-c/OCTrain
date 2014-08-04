@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UINavigationController
+@interface LoginViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *phonenumber;
+@property (strong, nonatomic) IBOutlet UITextField *password;
 
 @end
