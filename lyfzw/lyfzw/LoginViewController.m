@@ -2,12 +2,12 @@
 //  LoginViewController.m
 //  lyfzw
 //
-//  Created by 成城 on 14-8-3.
+//  Created by 成城 on 14-8-4.
 //  Copyright (c) 2014年 cc. All rights reserved.
 //
 
 #import "LoginViewController.h"
-#import "MainViewController.h"
+
 @interface LoginViewController ()
 
 @end
@@ -27,15 +27,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    
-    UIBarButtonItem *FinishButton = [[UIBarButtonItem alloc] initWithTitle:@"完成"
-                                                                     style:UIBarButtonItemStylePlain
-                                                                    target:self
-                                                                    action:@selector(clickFinishButton:)];
-    self.FinishItem.leftBarButtonItem = FinishButton;
-    
-
+    UIBarButtonItem *FinishButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(clickFinishButton:)];
+    self.navigationItem.leftBarButtonItem = FinishButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,11 +37,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (void)clickFinishButton:(id)sender
 {
-
     [self dismissViewControllerAnimated:YES completion:NULL];
-    
 }
+
 @end

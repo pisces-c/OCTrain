@@ -22,9 +22,9 @@
 		2388BDE2198C8C7100F809B0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2388BDC6198C8C7100F809B0 /* CoreData.framework */; };
 		2388BDEA198C8C7100F809B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2388BDE8198C8C7100F809B0 /* InfoPlist.strings */; };
 		2388BDEC198C8C7100F809B0 /* lyfzwTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2388BDEB198C8C7100F809B0 /* lyfzwTests.m */; };
+		23A899FB198FBBD500D2E695 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A899F9198FBBD500D2E695 /* LoginViewController.m */; };
+		23A899FC198FBBD500D2E695 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A899FA198FBBD500D2E695 /* LoginViewController.xib */; };
 		23D88F6C198E08D600A1CEA6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D88F6B198E08D600A1CEA6 /* MainViewController.m */; };
-		23D88F70198E107900A1CEA6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D88F6E198E107900A1CEA6 /* LoginViewController.m */; };
-		23D88F71198E107900A1CEA6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D88F6F198E107900A1CEA6 /* LoginViewController.xib */; };
 		23D88F75198E10A300A1CEA6 /* RegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D88F73198E10A300A1CEA6 /* RegViewController.m */; };
 		23D88F76198E10A300A1CEA6 /* RegViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D88F74198E10A300A1CEA6 /* RegViewController.xib */; };
 		23D88F7F198E118700A1CEA6 /* HeaderIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D88F78198E118700A1CEA6 /* HeaderIcon.png */; };
@@ -65,11 +65,11 @@
 		2388BDE7198C8C7100F809B0 /* lyfzwTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "lyfzwTests-Info.plist"; sourceTree = "<group>"; };
 		2388BDE9198C8C7100F809B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2388BDEB198C8C7100F809B0 /* lyfzwTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lyfzwTests.m; sourceTree = "<group>"; };
+		23A899F8198FBBD500D2E695 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		23A899F9198FBBD500D2E695 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		23A899FA198FBBD500D2E695 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		23D88F6A198E08D600A1CEA6 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		23D88F6B198E08D600A1CEA6 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		23D88F6D198E107900A1CEA6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		23D88F6E198E107900A1CEA6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		23D88F6F198E107900A1CEA6 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		23D88F72198E10A300A1CEA6 /* RegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegViewController.h; sourceTree = "<group>"; };
 		23D88F73198E10A300A1CEA6 /* RegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegViewController.m; sourceTree = "<group>"; };
 		23D88F74198E10A300A1CEA6 /* RegViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegViewController.xib; sourceTree = "<group>"; };
@@ -150,12 +150,12 @@
 				2388BDC9198C8C7100F809B0 /* Supporting Files */,
 				23D88F6A198E08D600A1CEA6 /* MainViewController.h */,
 				23D88F6B198E08D600A1CEA6 /* MainViewController.m */,
-				23D88F6D198E107900A1CEA6 /* LoginViewController.h */,
-				23D88F6E198E107900A1CEA6 /* LoginViewController.m */,
-				23D88F6F198E107900A1CEA6 /* LoginViewController.xib */,
 				23D88F72198E10A300A1CEA6 /* RegViewController.h */,
 				23D88F73198E10A300A1CEA6 /* RegViewController.m */,
 				23D88F74198E10A300A1CEA6 /* RegViewController.xib */,
+				23A899F8198FBBD500D2E695 /* LoginViewController.h */,
+				23A899F9198FBBD500D2E695 /* LoginViewController.m */,
+				23A899FA198FBBD500D2E695 /* LoginViewController.xib */,
 			);
 			path = lyfzw;
 			sourceTree = "<group>";
@@ -280,12 +280,12 @@
 			files = (
 				2388BDCD198C8C7100F809B0 /* InfoPlist.strings in Resources */,
 				23D88F83198E118700A1CEA6 /* Pass_Word_Icon@2x.png in Resources */,
+				23A899FC198FBBD500D2E695 /* LoginViewController.xib in Resources */,
 				23D88F81198E118700A1CEA6 /* lyfzwIcon.png in Resources */,
 				23D88F84198E118700A1CEA6 /* SelectBack@2x.png in Resources */,
 				23D88F82198E118700A1CEA6 /* lyfzwIcon@2x.png in Resources */,
 				23D88F85198E118700A1CEA6 /* User_account_icon@2x.png in Resources */,
 				2388BDD8198C8C7100F809B0 /* Images.xcassets in Resources */,
-				23D88F71198E107900A1CEA6 /* LoginViewController.xib in Resources */,
 				23D88F76198E10A300A1CEA6 /* RegViewController.xib in Resources */,
 				23D88F7F198E118700A1CEA6 /* HeaderIcon.png in Resources */,
 				23D88F80198E118700A1CEA6 /* lyfzwIcon-h@2x.png in Resources */,
@@ -309,9 +309,9 @@
 			files = (
 				2388BDD3198C8C7100F809B0 /* AppDelegate.m in Sources */,
 				2388BDD6198C8C7100F809B0 /* lyfzw.xcdatamodeld in Sources */,
+				23A899FB198FBBD500D2E695 /* LoginViewController.m in Sources */,
 				2388BDCF198C8C7100F809B0 /* main.m in Sources */,
 				23D88F6C198E08D600A1CEA6 /* MainViewController.m in Sources */,
-				23D88F70198E107900A1CEA6 /* LoginViewController.m in Sources */,
 				23D88F75198E10A300A1CEA6 /* RegViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,13 +26,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem *BackButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(clickBackButton:)];
-    self.RegItem.leftBarButtonItem = BackButton;
+    self.navigationController.navigationItem.leftBarButtonItem = BackButton;
 
+    
+    UIButton *RegButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    RegButton.frame = CGRectMake(20, 100, 300, 40);
+    [self.view addSubview:RegButton];
 }
 
 - (void)didReceiveMemoryWarning
