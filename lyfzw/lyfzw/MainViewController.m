@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "LoginViewController.h"
 #import "RegViewController.h"
+
 @interface MainViewController ()
 
 @end
@@ -40,6 +41,12 @@
     
 
     //2、添加搜索框
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    searchBar.searchBarStyle = UISearchBarStyleProminent;
+    searchBar.frame = CGRectMake(0, 80, 320, 40);
+    searchBar.backgroundColor = [UIColor greenColor];
+    [searchBar showsCancelButton];
+    [self.view addSubview:searchBar];
     //3、添加UITableView
 //    UITableView *tableview = [[UITableView alloc] init];
     

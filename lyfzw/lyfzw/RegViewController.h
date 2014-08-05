@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegViewController : UIViewController
+@interface RegViewController : UIViewController <UITextFieldDelegate>
 
-@property (retain ,nonatomic) UITextField *phoneNum;
-@property (retain ,nonatomic) UITextField *pwd;
-@property (retain ,nonatomic) UIBarButtonItem *BackButton;
+@property (strong, nonatomic) IBOutlet UITextField *phoneNum;
+@property (strong, nonatomic) IBOutlet UITextField *password;
+@property (strong, nonatomic) IBOutlet UIButton *finishbutton;
 
 @end
