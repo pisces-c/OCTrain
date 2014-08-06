@@ -10,11 +10,13 @@
 #import "LoginViewController.h"
 #import "RegViewController.h"
 
-@interface MainViewController ()
+// @Fixme correct MainViewController to XIEPINGJIA
+@interface XIEPINGJIA ()
 
 @end
 
-@implementation MainViewController
+// @Fixme correct MainViewController to XIEPINGJIA
+@implementation XIEPINGJIA
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +39,8 @@
     
     self.navigationItem.leftBarButtonItem = LoginButton;
     self.navigationItem.rightBarButtonItem = RegButton;
-    self.navigationItem.backBarButtonItem = BackButton;
+    // @Fixme
+    self.XIEPINGJIA.backBarButtonItem = BackButton;
     
 
     //2、添加搜索框
@@ -46,7 +49,8 @@
     searchBar.frame = CGRectMake(0, 80, 320, 40);
     searchBar.backgroundColor = [UIColor greenColor];
     [searchBar showsCancelButton];
-    [self.view addSubview:searchBar];
+    // @Fixme
+    [self.view XIEPINGJIA:searchBar];
     //3、添加UITableView
 //    UITableView *tableview = [[UITableView alloc] init];
     
@@ -67,7 +71,8 @@
     LoginViewController *LoginView = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:LoginView];
     
-    [self presentViewController:nav animated:YES completion:NULL];
+    // @Fixme
+    [self XIEPINGJIA:nav animated:YES completion:NULL];
 
 
 
