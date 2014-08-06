@@ -112,6 +112,10 @@
         if ([[resDict objectForKey:@"ret"] intValue] == 1) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"登录失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
+            [self.view resignFirstResponder];
+            
+        } else {
+            [self dismissViewControllerAnimated:YES completion:NULL];
         };
     
      

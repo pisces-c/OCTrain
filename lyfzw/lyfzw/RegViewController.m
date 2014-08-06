@@ -38,6 +38,7 @@
     
     _password.delegate = self;
     _phoneNum.delegate = self;
+    
 }
 
 
@@ -87,6 +88,12 @@
     NSString *password = _password.text;
     NSString *hostname = [[NSString alloc] initWithFormat:@"www.zglyfzw.com/webapp/api"];
     
+    if (phonenumber.length == 0 || password.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入帐号密码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
     NSMutableDictionary *regInfoDict = [[NSMutableDictionary alloc] init];
     [regInfoDict setValue:phonenumber forKey:@"mobile"];
     [regInfoDict setValue:password forKey:@"pwd"];
@@ -95,6 +102,21 @@
     MKNetworkOperation *op = [engine operationWithPath:@"register.php" params:regInfoDict httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSLog(@"%@",[completedOperation responseString]);
+        
+        NSData *resData = [completedOperation responseData];
+        NSDictionary *resDict = [[NSDictionary alloc] init];
+        resDict = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+        
+        if ([[resDict objectForKey:@"ret"] intValue] == 0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"注册成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+            //页面返回之后点击提示框确定会崩溃
+            [self dismissViewControllerAnimated:YES completion:NULL];
+        } else {
+            
+            [self dismissViewControllerAnimated:YES completion:NULL];
+        };
+        
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         NSLog(@"error");
     }];
