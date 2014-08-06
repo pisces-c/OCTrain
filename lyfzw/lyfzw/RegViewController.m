@@ -59,14 +59,6 @@
     [UIView commitAnimations];
 }
 
-//- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-//{
-    //返回BOOL值，指定是否允许文本字段结束编辑，当编辑结束，文本字段会让出first responder
-    //要想在用户结束编辑时阻止文本字段消失，可以返回NO
-    //这对一些文本字段必须始终保持活跃状态的程序很有用，比如即时消息
-//    return NO;
-//}
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -87,6 +79,35 @@
     [self.view endEditing:YES];
     [UIView commitAnimations];
 }
+
+
+- (IBAction)clickToRegist:(id)sender {
+    
+    NSString *phonenumber = _phoneNum.text;
+    NSString *password = _password.text;
+    NSString *hostname = [[NSString alloc] initWithFormat:@"www.zglyfzw.com/webapp/api"];
+    
+    NSMutableDictionary *regInfoDict = [[NSMutableDictionary alloc] init];
+    [regInfoDict setValue:phonenumber forKey:@"mobile"];
+    [regInfoDict setValue:password forKey:@"pwd"];
+
+    MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:hostname customHeaderFields:nil];
+    MKNetworkOperation *op = [engine operationWithPath:@"register.php" params:regInfoDict httpMethod:@"POST"];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSLog(@"%@",[completedOperation responseString]);
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        NSLog(@"error");
+    }];
+    [engine enqueueOperation:op];
+    
+}
+
+
+
+
+
+
+
 
 
 - (void)didReceiveMemoryWarning

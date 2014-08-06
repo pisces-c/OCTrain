@@ -46,7 +46,7 @@
     //2、添加搜索框
     UISearchBar *searchBar = [[UISearchBar alloc] init];
     searchBar.searchBarStyle = UISearchBarStyleProminent;
-    searchBar.frame = CGRectMake(0, 80, 320, 40);
+    searchBar.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height+20, 320, 40);
     searchBar.backgroundColor = [UIColor greenColor];
     [searchBar showsCancelButton];
     // @Fixme
