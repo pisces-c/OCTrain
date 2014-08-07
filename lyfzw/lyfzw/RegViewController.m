@@ -110,11 +110,11 @@
         if ([[resDict objectForKey:@"ret"] intValue] == 0) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"注册成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
-            //页面返回之后点击提示框确定会崩溃
+            [self resignFirstResponder];
             [self dismissViewControllerAnimated:YES completion:NULL];
         } else {
             
-            [self dismissViewControllerAnimated:YES completion:NULL];
+
         };
         
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
@@ -123,14 +123,6 @@
     [engine enqueueOperation:op];
     
 }
-
-
-
-
-
-
-
-
 
 - (void)didReceiveMemoryWarning
 {

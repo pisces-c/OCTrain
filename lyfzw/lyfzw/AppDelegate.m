@@ -26,8 +26,8 @@
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
-    
-    
+    nav.navigationBar.barTintColor = [UIColor colorWithRed:0 green:0.3 blue:0 alpha:0];
+
     return YES;
 }
 

@@ -20,6 +20,8 @@
 		233C985119925A530063ED63 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233C985019925A530063ED63 /* CFNetwork.framework */; };
 		233C985319925A5E0063ED63 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233C985219925A5E0063ED63 /* Security.framework */; };
 		233C985519925A6A0063ED63 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233C985419925A6A0063ED63 /* ImageIO.framework */; };
+		233C985A1993D0B10063ED63 /* QuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C98591993D0B10063ED63 /* QuoteViewController.m */; };
+		233C985D1993D0C30063ED63 /* ConsultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C985C1993D0C30063ED63 /* ConsultViewController.m */; };
 		2388BDC1198C8C7100F809B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2388BDC0198C8C7100F809B0 /* Foundation.framework */; };
 		2388BDC3198C8C7100F809B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2388BDC2198C8C7100F809B0 /* CoreGraphics.framework */; };
 		2388BDC5198C8C7100F809B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2388BDC4198C8C7100F809B0 /* UIKit.framework */; };
@@ -83,6 +85,10 @@
 		233C985019925A530063ED63 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		233C985219925A5E0063ED63 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		233C985419925A6A0063ED63 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		233C98581993D0B10063ED63 /* QuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteViewController.h; sourceTree = "<group>"; };
+		233C98591993D0B10063ED63 /* QuoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteViewController.m; sourceTree = "<group>"; };
+		233C985B1993D0C30063ED63 /* ConsultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultViewController.h; sourceTree = "<group>"; };
+		233C985C1993D0C30063ED63 /* ConsultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultViewController.m; sourceTree = "<group>"; };
 		2388BDBD198C8C7100F809B0 /* lyfzw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lyfzw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2388BDC0198C8C7100F809B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2388BDC2198C8C7100F809B0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -238,6 +244,10 @@
 				2388BDC9198C8C7100F809B0 /* Supporting Files */,
 				23D88F6A198E08D600A1CEA6 /* MainViewController.h */,
 				23D88F6B198E08D600A1CEA6 /* MainViewController.m */,
+				233C98581993D0B10063ED63 /* QuoteViewController.h */,
+				233C98591993D0B10063ED63 /* QuoteViewController.m */,
+				233C985B1993D0C30063ED63 /* ConsultViewController.h */,
+				233C985C1993D0C30063ED63 /* ConsultViewController.m */,
 				23D88F72198E10A300A1CEA6 /* RegViewController.h */,
 				23D88F73198E10A300A1CEA6 /* RegViewController.m */,
 				23D88F74198E10A300A1CEA6 /* RegViewController.xib */,
@@ -408,6 +418,8 @@
 				23D88F6C198E08D600A1CEA6 /* MainViewController.m in Sources */,
 				23D88F75198E10A300A1CEA6 /* RegViewController.m in Sources */,
 				233C9845199259F90063ED63 /* NSData+MKBase64.m in Sources */,
+				233C985D1993D0C30063ED63 /* ConsultViewController.m in Sources */,
+				233C985A1993D0B10063ED63 /* QuoteViewController.m in Sources */,
 				233C984A199259F90063ED63 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				233C9849199259F90063ED63 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 			);
