@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface MainViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
+{
+    NSDictionary *newDict;
+    NSMutableArray *newsTitle;
+    NSString *topnewsTitle;
+}
+
+
 
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "QuoteViewController.h"
+#import "Model.h"
+#import "GetNews.h"
 
 @interface QuoteViewController ()
 
@@ -27,6 +29,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UITableView *quoteTable = [[UITableView alloc] init];
+    quoteTable.frame = CGRectMake(0, 0, 320, 700);
+    
+    
+//    NSArray *buttonTitle = [[NSArray alloc] init];
+    
+    
+    
+    
+    
+    [self.view addSubview:quoteTable];
+    
 }
 
 - (void)didReceiveMemoryWarning

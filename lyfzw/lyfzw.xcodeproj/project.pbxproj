@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		233A273C19952EA50061554F /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 233A273B19952EA50061554F /* Model.m */; };
 		233C9845199259F90063ED63 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C9831199259F90063ED63 /* NSData+MKBase64.m */; };
 		233C9846199259F90063ED63 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C9833199259F90063ED63 /* NSDate+RFC1123.m */; };
 		233C9847199259F90063ED63 /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 233C9835199259F90063ED63 /* NSDictionary+RequestEncoding.m */; };
@@ -40,6 +41,7 @@
 		23A899FB198FBBD500D2E695 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A899F9198FBBD500D2E695 /* LoginViewController.m */; };
 		23A899FC198FBBD500D2E695 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A899FA198FBBD500D2E695 /* LoginViewController.xib */; };
 		23A899FF198FE01C00D2E695 /* User_account_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A89A01198FE01C00D2E695 /* User_account_icon@2x.png */; };
+		23BFFCBC19977D90008587C6 /* GetNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BFFCBB19977D90008587C6 /* GetNews.m */; };
 		23D88F6C198E08D600A1CEA6 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D88F6B198E08D600A1CEA6 /* MainViewController.m */; };
 		23D88F75198E10A300A1CEA6 /* RegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D88F73198E10A300A1CEA6 /* RegViewController.m */; };
 		23D88F76198E10A300A1CEA6 /* RegViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D88F74198E10A300A1CEA6 /* RegViewController.xib */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		233A273A19952EA50061554F /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		233A273B19952EA50061554F /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		233C9830199259F90063ED63 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
 		233C9831199259F90063ED63 /* NSData+MKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MKBase64.m"; sourceTree = "<group>"; };
 		233C9832199259F90063ED63 /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 		23A899F9198FBBD500D2E695 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		23A899FA198FBBD500D2E695 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		23A89A00198FE01C00D2E695 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/User_account_icon@2x.png"; sourceTree = "<group>"; };
+		23BFFCBA19977D90008587C6 /* GetNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNews.h; sourceTree = "<group>"; };
+		23BFFCBB19977D90008587C6 /* GetNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNews.m; sourceTree = "<group>"; };
 		23D88F6A198E08D600A1CEA6 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		23D88F6B198E08D600A1CEA6 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		23D88F72198E10A300A1CEA6 /* RegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegViewController.h; sourceTree = "<group>"; };
@@ -254,6 +260,10 @@
 				23A899F8198FBBD500D2E695 /* LoginViewController.h */,
 				23A899F9198FBBD500D2E695 /* LoginViewController.m */,
 				23A899FA198FBBD500D2E695 /* LoginViewController.xib */,
+				233A273A19952EA50061554F /* Model.h */,
+				233A273B19952EA50061554F /* Model.m */,
+				23BFFCBA19977D90008587C6 /* GetNews.h */,
+				23BFFCBB19977D90008587C6 /* GetNews.m */,
 			);
 			path = lyfzw;
 			sourceTree = "<group>";
@@ -408,8 +418,10 @@
 				2388BDD3198C8C7100F809B0 /* AppDelegate.m in Sources */,
 				2388BDD6198C8C7100F809B0 /* lyfzw.xcdatamodeld in Sources */,
 				233C9846199259F90063ED63 /* NSDate+RFC1123.m in Sources */,
+				233A273C19952EA50061554F /* Model.m in Sources */,
 				233C9848199259F90063ED63 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				233C984B199259F90063ED63 /* MKNetworkEngine.m in Sources */,
+				23BFFCBC19977D90008587C6 /* GetNews.m in Sources */,
 				233C984C199259F90063ED63 /* MKNetworkOperation.m in Sources */,
 				23A899FB198FBBD500D2E695 /* LoginViewController.m in Sources */,
 				233C9847199259F90063ED63 /* NSDictionary+RequestEncoding.m in Sources */,
