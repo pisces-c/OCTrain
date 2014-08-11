@@ -98,7 +98,7 @@
     MKNetworkOperation *op = [getnews operationWithPath:@"index.php?page_no=1" params:nil httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         
-        NSLog(@"%@",[completedOperation responseJSON]);
+//        NSLog(@"%@",[completedOperation responseJSON]);
         NSData *topnews = [completedOperation responseData];
         newsTitle = [[NSMutableArray alloc] init];
         
@@ -120,18 +120,17 @@
             NSDictionary *dataValue = dataDict[@"data"];
             
             // get all values of data
-            
             NSArray *topnews = [dataValue objectForKey:@"topnews"];
             for (id topnewsDict in topnews) {
                 if ([topnewsDict isKindOfClass:[NSDictionary class]]) {
 
                     topnewsTitle = [topnewsDict objectForKey:@"title"];
-                    NSLog(@"%@",newsTitle);
+                    Model *model = [[Model alloc] initWithnewsTitle:topnewsTitle];
+                    [newsTitle addObject:model];
+//                    NSLog(@"%@",topnewsTitle);
+                    
                 }
             }
-            
-            
-            
             NSArray *dataAllValues = [dataValue allValues];
             
             // for loop
@@ -141,7 +140,7 @@
                     // get title
                     NSString *title = valueDict[@"title"];
                     if (title) {
-                        NSLog(@"%@", title);
+//                        NSLog(@"%@", title);
                         Model *model = [[Model alloc] initWithnewsTitle:title];
                         [newsTitle addObject:model];
                     }
@@ -185,10 +184,13 @@
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     }
-    UIImage *header = [UIImage imageNamed:@"HeaderIcon"];
-    [cell.imageView setImage:header];
-    cell.textLabel.text = topnewsTitle;
-    
+    if (indexPath.row == 0) {
+        UIImage *header = [UIImage imageNamed:@"HeaderIcon"];
+        [cell.imageView setImage:header];
+        cell.textLabel.text = ((Model *)[newsTitle objectAtIndex:indexPath.row]).newsTitle;
+    } else {
+        [cell.imageView setImage:nil];
+    }
     
     
     cell.textLabel.text = ((Model *)[newsTitle objectAtIndex:indexPath.row]).newsTitle;

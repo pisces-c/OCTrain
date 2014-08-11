@@ -16,5 +16,6 @@
 @property (nonatomic ,retain) NSString *newsID;
 
 - (instancetype)initWithnewsTitle :(NSString *)newsTitle;
+- (instancetype)initWithnewsCat :(NSString *)newsCat;
 
 @end

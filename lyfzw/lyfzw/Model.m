@@ -20,4 +20,12 @@
     return self;
 }
 
+- (instancetype)initWithnewsCat :(NSString *)newsCat;
+{
+    self = [super init];
+    if (self) {
+        _newsCat = newsCat;
+    }
+    return self;
+}
 @end

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface QuoteViewController : UIViewController
-
+{
+    NSMutableArray *newsCat;
+    NSMutableArray *newtitle_cat;
+}
 @end
