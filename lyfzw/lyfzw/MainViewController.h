@@ -13,6 +13,8 @@
     NSDictionary *newDict;
     NSMutableArray *newsTitle;
     NSString *topnewsTitle;
+    NSString *topnewsContent;
+    NSMutableArray *newsContent;
 }
 
 

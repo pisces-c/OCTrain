@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ConsultViewController : UIViewController
-
+@interface ConsultViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+{
+    NSMutableArray *newsCat;
+    NSMutableArray *newtitle_cat;
+}
 @end

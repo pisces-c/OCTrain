@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "InfoViewController.h"
 #import "LoginViewController.h"
 #import "RegViewController.h"
 #import "QuoteViewController.h"
@@ -101,6 +102,7 @@
 //        NSLog(@"%@",[completedOperation responseJSON]);
         NSData *topnews = [completedOperation responseData];
         newsTitle = [[NSMutableArray alloc] init];
+        newsContent = [[NSMutableArray alloc] init];
         
         // return type id
         id data = [NSJSONSerialization JSONObjectWithData:topnews options:NSJSONReadingMutableContainers error:nil];
@@ -125,8 +127,11 @@
                 if ([topnewsDict isKindOfClass:[NSDictionary class]]) {
 
                     topnewsTitle = [topnewsDict objectForKey:@"title"];
+                    topnewsContent = [topnewsDict objectForKey:@"content"];
                     Model *model = [[Model alloc] initWithnewsTitle:topnewsTitle];
+                    Model *content = [[Model alloc] initWithnewsContent:topnewsContent];
                     [newsTitle addObject:model];
+                    [newsContent addObject:content];
 //                    NSLog(@"%@",topnewsTitle);
                     
                 }
@@ -143,6 +148,11 @@
 //                        NSLog(@"%@", title);
                         Model *model = [[Model alloc] initWithnewsTitle:title];
                         [newsTitle addObject:model];
+                    }
+                    NSString *contents = [valueDict objectForKey:@"content"];
+                    if (contents) {
+                        Model *content = [[Model alloc] initWithnewsContent:contents];
+                        [newsContent addObject:content];
                     }
                 }
             }
@@ -199,7 +209,15 @@
 }
 
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    Model *model = newsContent[indexPath.row];
+    InfoViewController *infoView = [[InfoViewController alloc] init];
+    infoView.info = model.newsContent;
+    
+    [self.navigationController pushViewController:infoView animated:YES];
+}
 
 
 /**

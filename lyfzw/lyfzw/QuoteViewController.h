@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuoteViewController : UIViewController
+@interface QuoteViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
-    NSMutableArray *newsCat;
+    NSMutableArray *newCatID;
+    NSMutableArray *newsCatName;
     NSMutableArray *newtitle_cat;
 }
 @end

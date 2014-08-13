@@ -47,8 +47,9 @@
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSData *data = [completedOperation responseData];
         
-        NSLog(@"%@",[completedOperation responseJSON]);
-        newsCat = [[NSMutableArray alloc] init];
+//        NSLog(@"%@",[completedOperation responseJSON]);
+        newsCatName = [[NSMutableArray alloc] init];
+        newCatID = [[NSMutableArray alloc] init];
         
         [waitload startAnimating];
         
@@ -66,22 +67,26 @@
                 for (id catValuesDict in data) {
                     if ([catValuesDict isKindOfClass:[NSDictionary class]]) {
                         NSString *catname = [catValuesDict objectForKey:@"catname"];
-                        if (catname) {
+                        NSString *catid = [catValuesDict objectForKey:@"cid"];
+                        if (catname || catid) {
                             NSLog(@"%@",catname);
-                            Model *model = [[Model alloc] initWithnewsCat:catname];
-                            [newsCat addObject:model];
+                            Model *model = [[Model alloc] initWithnewsCatID:catid catName:catname];
+                            [newsCatName addObject:model.newsCatName];
+                            [newCatID addObject:model.newsCatID];
                             
                         }
                     }
                 }
-                for (int i = 0; i < newsCat.count; i++) {
+                for (int i = 0; i < newsCatName.count; i++) {
                     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
                     [button.layer setBorderWidth:1.0f];
                     [button.layer setBorderColor:[UIColor blueColor].CGColor];
-                    button.frame = CGRectMake(i*(320/newsCat.count), 64, 320/newsCat.count, 40);
+                    button.frame = CGRectMake(i*(320/newsCatName.count), 64, 320/newsCatName.count, 40);
                     button.tag = i;
-                    NSString *title = ((Model *)[newsCat objectAtIndex:i]).newsCat;
+                    NSString *title = [newsCatName objectAtIndex:i];
                     [button setTitle:title forState:UIControlStateNormal];
+                    [button addTarget:self action:@selector(clickCatButton:) forControlEvents:UIControlEventTouchUpInside];
+                    
                     [self.view addSubview:button];
                     
                 }
@@ -110,7 +115,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellname = @"newscell";
+    static NSString *cellname = @"quotecell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellname];
@@ -121,6 +126,41 @@
     
     return cell;
 }
+
+
+
+-(void)clickCatButton:(id)sender
+{
+    NSString *page_no = @"page_no";
+    NSString *catid = @"catid";
+    NSDictionary *param = [[NSDictionary alloc] init];
+    [param setValue:@"1" forKey:page_no];
+    switch (self.view.tag) {
+        case 0:
+            [param setValue:@"0" forKey:catid];
+            MKNetworkEngine *getQuoteTitle = [[MKNetworkEngine alloc] initWithHostName:@"www.zglyfzw.com/webapp/api/" customHeaderFields:nil];
+            MKNetworkOperation *op = [getQuoteTitle operationWithPath:@"quote.php" params:param httpMethod:@"GET"];
+            [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+                NSLog(@"%@",[completedOperation responseData]);
+            } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+                NSLog(@"error");
+            }];
+            [getQuoteTitle enqueueOperation:op];
+            break;
+        case 1:
+            [param setValue:@"1" forKey:@"catid"];
+            break;
+        case 2:
+            [param setValue:@"2" forKey:@"catid"];
+        default:
+            break;
+    }
+}
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -20,12 +20,34 @@
     return self;
 }
 
-- (instancetype)initWithnewsCat :(NSString *)newsCat;
+- (instancetype)initWithnewsCatID :(NSString *)newsCatID catName :(NSString *)newsCatName
 {
     self = [super init];
     if (self) {
-        _newsCat = newsCat;
+        _newsCatID = newsCatID;
+        _newsCatName = newsCatName;
     }
     return self;
 }
+
+- (instancetype)initWithnewsCatID :(NSString *)newsCatID newsID :(NSString *)newsID newsTitle:(NSString *)newsTitle
+{
+    self = [super init];
+    if (self) {
+        _newsCatID = newsCatID;
+        _newsID = newsID;
+        _newsTitle = newsTitle;
+    }
+    return self;
+}
+
+- (instancetype)initWithnewsContent :(NSString *)newsContent
+{
+    self = [super init];
+    if (self) {
+        _newsContent = newsContent;
+    }
+    return self;
+}
+
 @end
