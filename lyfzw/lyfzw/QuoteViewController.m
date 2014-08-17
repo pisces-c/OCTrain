@@ -9,6 +9,7 @@
 #import "QuoteViewController.h"
 #import "Model.h"
 #import "GetNews.h"
+#import "InfoViewController.h"
 
 @interface QuoteViewController ()
 
@@ -29,15 +30,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    newTitle = [NSMutableArray new];
+    newsContent = [NSMutableArray new];
     
-    UITableView *quoteTable = [[UITableView alloc] init];
-    quoteTable.frame = CGRectMake(0, 64, 320, 700);
+    quoteTable = [[UITableView alloc] init];
+    quoteTable.frame = CGRectMake(0, 50, 320, 568-113);
     quoteTable.tableHeaderView.backgroundColor = [UIColor blackColor];
-    
-    UIActivityIndicatorView *waitload = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    waitload.backgroundColor = [UIColor blackColor];
-    waitload.alpha = 0.2;
-    waitload.center = CGPointMake(self.view.center.x, self.view.center.y - 100);
+    quoteTable.delegate = self;
+    quoteTable.dataSource = self;
     
     [self.view addSubview:waitload];
     [self.view addSubview:quoteTable];
@@ -69,48 +69,34 @@
                         NSString *catname = [catValuesDict objectForKey:@"catname"];
                         NSString *catid = [catValuesDict objectForKey:@"cid"];
                         if (catname || catid) {
-                            NSLog(@"%@",catname);
+//                            NSLog(@"%@",catname);
                             Model *model = [[Model alloc] initWithnewsCatID:catid catName:catname];
                             [newsCatName addObject:model.newsCatName];
                             [newCatID addObject:model.newsCatID];
-                            
                         }
                     }
                 }
-                for (int i = 0; i < newsCatName.count; i++) {
-                    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-                    [button.layer setBorderWidth:1.0f];
-                    [button.layer setBorderColor:[UIColor blueColor].CGColor];
-                    button.frame = CGRectMake(i*(320/newsCatName.count), 64, 320/newsCatName.count, 40);
-                    button.tag = i;
-                    NSString *title = [newsCatName objectAtIndex:i];
-                    [button setTitle:title forState:UIControlStateNormal];
-                    [button addTarget:self action:@selector(clickCatButton:) forControlEvents:UIControlEventTouchUpInside];
-                    
-                    [self.view addSubview:button];
-                    
-                }
+                UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:newsCatName];
+                segmentedControl.frame = CGRectMake(10, 70, 300, 40);
+                [segmentedControl addTarget:self action:@selector(clickCat:) forControlEvents:UIControlEventValueChanged];
+                [segmentedControl setSelectedSegmentIndex:0];
+                [self.view addSubview:segmentedControl];
+                [self getCatIdMessageAndReloadTableView:1];
             }
         }
         [quoteTable reloadData];
+        [waitload stopAnimating];
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         NSLog(@"error");
     }];
     [getQuote enqueueOperation:op];
-    
-    
-    
-    
-    
-
-    
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return newtitle_cat.count;
+    return newTitle.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -124,41 +110,90 @@
         cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     }
     
+    cell.textLabel.text = newTitle[indexPath.row];
+    
     return cell;
 }
 
-
-
--(void)clickCatButton:(id)sender
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *page_no = @"page_no";
-    NSString *catid = @"catid";
-    NSDictionary *param = [[NSDictionary alloc] init];
-    [param setValue:@"1" forKey:page_no];
-    switch (self.view.tag) {
-        case 0:
-            [param setValue:@"0" forKey:catid];
-            MKNetworkEngine *getQuoteTitle = [[MKNetworkEngine alloc] initWithHostName:@"www.zglyfzw.com/webapp/api/" customHeaderFields:nil];
-            MKNetworkOperation *op = [getQuoteTitle operationWithPath:@"quote.php" params:param httpMethod:@"GET"];
-            [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-                NSLog(@"%@",[completedOperation responseData]);
-            } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-                NSLog(@"error");
-            }];
-            [getQuoteTitle enqueueOperation:op];
-            break;
-        case 1:
-            [param setValue:@"1" forKey:@"catid"];
-            break;
-        case 2:
-            [param setValue:@"2" forKey:@"catid"];
-        default:
-            break;
-    }
+    Model *model = [newsContent objectAtIndex:indexPath.row];
+    InfoViewController *infoView = [[InfoViewController alloc] init];
+    infoView.info = model.newsContent;
+    
+    [self.navigationController pushViewController:infoView animated:YES];
+}
+
+-(void)clickCat:(id)sender
+{
+    UISegmentedControl *segment = (UISegmentedControl *)sender;
+    
+    NSLog(@"%d",segment.selectedSegmentIndex);
+    
+    
+    [self getCatIdMessageAndReloadTableView:segment.selectedSegmentIndex+1];
+    
 }
 
 
-
+- (void)getCatIdMessageAndReloadTableView:(int)Id
+{
+    waitload = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    waitload.backgroundColor = [UIColor blackColor];
+    waitload.alpha = 0.2;
+    waitload.center = CGPointMake(self.view.center.x, self.view.center.y - 100);
+    [waitload startAnimating];
+    MKNetworkEngine *getQuote = [[MKNetworkEngine alloc] initWithHostName:@"www.zglyfzw.com/webapp/api/" customHeaderFields:nil];
+    NSString *params = [NSString stringWithFormat:@"quote.php?catid=%d",Id];
+    MKNetworkOperation *op = [getQuote operationWithPath:params params:nil httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSData *data = [completedOperation responseData];
+        newsCatName = [[NSMutableArray alloc] init];
+        newCatID = [[NSMutableArray alloc] init];
+        
+        
+        id catdata = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        if ([catdata isKindOfClass:[NSDictionary class]]) {
+            
+            NSDictionary *catDict = (NSDictionary *)catdata;
+            
+            NSString *msg = [catDict objectForKey:@"msg"];
+            if ([msg isEqualToString:@"ok"]) {
+                
+                NSArray *data = [catDict objectForKey:@"data"];
+                
+                // clean
+                [newTitle removeAllObjects];
+                for (id catValuesDict in data) {
+                    if ([catValuesDict isKindOfClass:[NSDictionary class]]) {
+                        NSString *catname = [catValuesDict objectForKey:@"biaojiachu"];
+                        if (catname) {
+                            Model *model = [[Model alloc] initWithnewsTitle:catname];
+                            [newTitle addObject:model.newsTitle];
+                            
+                        }
+                        NSString *content = [catValuesDict objectForKey:@"content"];
+                        if (content) {
+                            Model *contents = [[Model alloc] initWithnewsContent:content];
+                            [newsContent addObject:contents];
+                        }
+                    }
+                }
+                
+                [quoteTable reloadData];
+                
+                // post
+                
+            }
+        }
+        [quoteTable reloadData];
+        [waitload stopAnimating];
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        NSLog(@"error");
+    }];
+    [getQuote enqueueOperation:op];
+}
 
 
 

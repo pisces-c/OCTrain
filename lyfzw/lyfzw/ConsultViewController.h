@@ -10,7 +10,12 @@
 
 @interface ConsultViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
-    NSMutableArray *newsCat;
-    NSMutableArray *newtitle_cat;
+    NSMutableArray *newsCatname;
+    NSMutableArray *newsTitle;
+    UITableView *consultTable;
+    NSMutableArray *newsCatId;
+    NSMutableArray *newsContent;
+    NSMutableArray *newsModel;
 }
+
 @end

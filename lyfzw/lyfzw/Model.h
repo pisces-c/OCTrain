@@ -20,5 +20,6 @@
 - (instancetype)initWithnewsCatID :(NSString *)newsCatID catName :(NSString *)newsCatName;
 - (instancetype)initWithnewsCatID :(NSString *)newsCatID newsID :(NSString *)newsID newsTitle:(NSString *)newsTitle;
 - (instancetype)initWithnewsContent :(NSString *)newsContent;
+- (instancetype)initWithnewsContent :(NSString *)newsContent :(NSString *)newsTitle;
 
 @end

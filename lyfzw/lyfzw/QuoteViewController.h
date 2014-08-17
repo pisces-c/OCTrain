@@ -12,6 +12,10 @@
 {
     NSMutableArray *newCatID;
     NSMutableArray *newsCatName;
-    NSMutableArray *newtitle_cat;
+    NSMutableArray *newTitle;
+    NSMutableArray *newsID;
+    NSMutableArray *newsContent;
+    UITableView *quoteTable;
+    UIActivityIndicatorView *waitload;
 }
 @end

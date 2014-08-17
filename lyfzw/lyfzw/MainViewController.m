@@ -13,6 +13,7 @@
 #import "QuoteViewController.h"
 #import "ConsultViewController.h"
 #import "Model.h"
+#import "SearchResultViewController.h"
 
 // @Fixme correct MainViewController to XIEPINGJIA
 @interface MainViewController ()
@@ -53,6 +54,7 @@
     UISearchBar *searchBar = [[UISearchBar alloc] init];
     searchBar.searchBarStyle = UISearchBarStyleDefault;
     searchBar.placeholder = @"在此键入";
+//    searchBar.keyboardType = UIKeyboardType;
     searchBar.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height+20, 320, 40);
     searchBar.delegate = self;
 
@@ -95,7 +97,7 @@
     
     [waitload startAnimating];
     
-    MKNetworkEngine *getnews = [[MKNetworkEngine alloc] initWithHostName:@"www.zglyfzw.com/webapp/api/" customHeaderFields:nil];
+    MKNetworkEngine *getnews = [[MKNetworkEngine alloc] initWithHostName:@"www.zglyfzw.com/webapp/api" customHeaderFields:nil];
     MKNetworkOperation *op = [getnews operationWithPath:@"index.php?page_no=1" params:nil httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         
@@ -162,11 +164,6 @@
             }
         }
         
-        
-        
-        
-//        newDict = [[NSDictionary alloc] init];
-//        newDict = [news objectForKey:@"nid"];
         [waitload stopAnimating];
         
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
@@ -234,7 +231,52 @@
     searchBar.showsCancelButton = NO;
     [self.view endEditing:YES];
 }
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    searchresult = [[NSMutableArray alloc] init];
+    NSString *keyword = [searchBar.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *path = [NSString stringWithFormat:@"search.php?keyword=%@",keyword];
+    MKNetworkEngine *search = [[MKNetworkEngine alloc] initWithHostName:@"www.zglyfzw.com/webapp/api"];
+    MKNetworkOperation *sch = [search operationWithPath:path];
+    [sch addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSData *data = [completedOperation responseData];
+        id newsdata = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        if ([newsdata isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = (NSDictionary *)newsdata;
+            if ([[dict objectForKey:@"msg"] isEqualToString:@"ok"]) {
+                NSArray *dataValue = [dict objectForKey:@"data"];
+                for (id valueDict in dataValue) {
+                    if ([valueDict isKindOfClass:[NSDictionary class]]) {
+                        NSString *title = [valueDict objectForKey:@"title"];
+                        NSString *content = [valueDict objectForKey:@"content"];
+                        if (title && content) {
+                            Model *result = [[Model alloc] initWithnewsContent:content :title];
+                            [searchresult addObject:result];
+                            
+                        }
+                        
+                        
+                    }
+                }
+                
+            }
+        }
+        
+        
+        SearchResultViewController *srv = [[SearchResultViewController alloc] init];\
+        srv.result = searchresult;
+        [self.navigationController pushViewController:srv animated:YES];
 
+        
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        NSLog(@"error");
+    }];
+    [search enqueueOperation:sch];
+    
+    
+    
+    
+}
 
 - (void)didReceiveMemoryWarning
 {

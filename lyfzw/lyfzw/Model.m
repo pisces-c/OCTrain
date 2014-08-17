@@ -50,4 +50,13 @@
     return self;
 }
 
+- (instancetype)initWithnewsContent :(NSString *)newsContent :(NSString *)newsTitle
+{
+    self = [super init];
+    if (self) {
+        _newsContent = newsContent;
+        _newsTitle = newsTitle;
+    }
+    return self;
+}
 @end

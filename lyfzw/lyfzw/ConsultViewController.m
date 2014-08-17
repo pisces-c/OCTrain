@@ -8,6 +8,7 @@
 
 #import "ConsultViewController.h"
 #import "Model.h"
+#import "InfoViewController.h"
 
 @interface ConsultViewController ()
 
@@ -29,17 +30,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UITableView *consultTable = [[UITableView alloc] init];
-    consultTable.frame = CGRectMake(0, 64, 320, 700);
+    newsModel = [NSMutableArray new];
+    newsContent = [NSMutableArray new];
+    
+    consultTable = [[UITableView alloc] init];
+    consultTable.frame = CGRectMake(0, 50, 320, 700);
     consultTable.tableHeaderView.backgroundColor = [UIColor blackColor];
     
-    UIActivityIndicatorView *waitload = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    waitload.backgroundColor = [UIColor blackColor];
-    waitload.alpha = 0.2;
-    waitload.center = CGPointMake(self.view.center.x, self.view.center.y - 100);
+    consultTable.delegate = self;
+    consultTable.dataSource = self;
     
-    [self.view addSubview:waitload];
     [self.view addSubview:consultTable];
+
+    newsCatname = [[NSMutableArray alloc] init];
+    newsTitle = [[NSMutableArray alloc] init];
     
     MKNetworkEngine *getConsult = [[MKNetworkEngine alloc] initWithHostName:@"www.zglyfzw.com/webapp/api/" customHeaderFields:nil];
     MKNetworkOperation *op = [getConsult operationWithPath:@"category.php?type=1" params:nil httpMethod:@"GET"];
@@ -47,9 +51,7 @@
         NSData *data = [completedOperation responseData];
         
         NSLog(@"%@",[completedOperation responseJSON]);
-        newsCat = [[NSMutableArray alloc] init];
-        
-        [waitload startAnimating];
+
         
         id catdata = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
@@ -62,29 +64,32 @@
                 
                 NSArray *data = [catDict objectForKey:@"data"];
                 
+                [newsModel removeAllObjects];
+                
                 for (id catValuesDict in data) {
                     if ([catValuesDict isKindOfClass:[NSDictionary class]]) {
                         NSString *catname = [catValuesDict objectForKey:@"catname"];
-                        NSString *catid = [catValuesDict objectForKey:@"id"];
+                        NSString *catid = [catValuesDict objectForKey:@"cid"];
                         if (catname || catid) {
                             NSLog(@"%@",catname);
                             Model *model = [[Model alloc] initWithnewsCatID:catid catName:catname];
-                            [newsCat addObject:model];
-                            
+                            [newsModel addObject:model];
                         }
                     }
                 }
-                for (int i = 0; i < newsCat.count; i++) {
-                    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-                    [button.layer setBorderWidth:1.0f];
-                    [button.layer setBorderColor:[UIColor blueColor].CGColor];
-                    button.frame = CGRectMake(i*(320/newsCat.count), 64, 320/newsCat.count, 40);
-                    button.tag = i;
-                    NSString *title = ((Model *)[newsCat objectAtIndex:i]).newsCatName;
-                    [button setTitle:title forState:UIControlStateNormal];
-                    [self.view addSubview:button];
-                    
+                
+                NSMutableArray *names = [NSMutableArray new];
+                for (Model *model in newsModel) {
+                    [names addObject:model.newsCatName];
                 }
+                
+                UISegmentedControl *catName = [[UISegmentedControl alloc] initWithItems:names];
+                catName.frame = CGRectMake(10, 70, 300, 40);
+                [catName addTarget:self action:@selector(clickCat:) forControlEvents:UIControlEventValueChanged];
+                [catName setSelectedSegmentIndex:0];
+                catName.selectedSegmentIndex = (NSInteger)newsCatId;
+                [self.view addSubview:catName];
+                [self getCatIdMessageAndReloadTableView:[((Model *)newsModel[0]).newsCatID intValue]];
             }
         }
         [consultTable reloadData];
@@ -101,7 +106,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return newtitle_cat.count;
+    return newsTitle.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -114,11 +119,75 @@
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     }
+//    cell.textLabel.text = (Model *)([newsCat objectAtIndex:indexPath.row]).newsTitle;
+    cell.textLabel.text =  [newsTitle objectAtIndex:indexPath.row];//((Model *)).newsTitle;
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Model *model = [newsContent objectAtIndex:indexPath.row];
+    InfoViewController *infoview = [[InfoViewController alloc] init];
+    infoview.info = model.newsContent;
+    [self.navigationController pushViewController:infoview animated:YES];
+}
 
 
+- (void)clickCat:(id)sender
+{
+    
+    UISegmentedControl *segment = (UISegmentedControl *)sender;
+    
+    NSLog(@"%d",segment.selectedSegmentIndex);
+    
+    Model *model = newsModel[segment.selectedSegmentIndex];
+    [self getCatIdMessageAndReloadTableView:[model.newsCatID intValue]];
+}
+
+
+- (void)getCatIdMessageAndReloadTableView:(int)catID
+{
+    NSString *path = [NSString stringWithFormat:@"news.php?catid=%d",catID];
+    MKNetworkEngine *getConsult = [[MKNetworkEngine alloc] initWithHostName:@"www.zglyfzw.com/webapp/api/" customHeaderFields:nil];
+    MKNetworkOperation *sp = [getConsult operationWithPath:path params:nil httpMethod:@"GET"];
+    [sp addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSData *data = [completedOperation responseData];
+        id catdata = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        if ([catdata isKindOfClass:[NSDictionary class]]) {
+            
+            NSDictionary *catDict = (NSDictionary *)catdata;
+            
+            NSString *msg = [catDict objectForKey:@"msg"];
+            if ([msg isEqualToString:@"ok"]) {
+                
+                NSArray *data = [catDict objectForKey:@"data"];
+                
+                // clean
+                [newsTitle removeAllObjects];
+                for (id catValuesDict in data) {
+                    if ([catValuesDict isKindOfClass:[NSDictionary class]]) {
+                        NSString *catname = [catValuesDict objectForKey:@"title"];
+                        if (catname) {
+                            Model *model = [[Model alloc] initWithnewsTitle:catname];
+                            [newsTitle addObject:model.newsTitle];
+                            
+                        }
+                        NSString *content = [catValuesDict objectForKey:@"content"];
+                        if (newsContent) {
+                            Model *contents = [[Model alloc] initWithnewsContent:content];
+                            [newsContent addObject:contents];
+                        }
+                    }
+                }
+            }
+        }
+        [consultTable reloadData];
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        NSLog(@"error");
+    }];
+    [getConsult enqueueOperation:sp];
+}
 
 
 

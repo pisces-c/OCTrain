@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Model.h"
+#import "EGORefreshTableHeaderView.h"
+#import "EGORefreshTableFooterView.h"
 
-@interface MainViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
+@interface MainViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,EGORefreshTableDelegate>
 {
     NSDictionary *newDict;
     NSMutableArray *newsTitle;
     NSString *topnewsTitle;
     NSString *topnewsContent;
     NSMutableArray *newsContent;
+    NSMutableArray *searchresult;
 }
 
 
