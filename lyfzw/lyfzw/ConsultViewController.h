@@ -16,6 +16,7 @@
     NSMutableArray *newsCatId;
     NSMutableArray *newsContent;
     NSMutableArray *newsModel;
+    NSMutableArray *newsTime;
 }
 
 @end

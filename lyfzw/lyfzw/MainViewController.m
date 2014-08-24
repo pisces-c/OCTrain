@@ -86,14 +86,25 @@
     [self.view addSubview:waitload];
     
     
-    UITableView *tableview = [[UITableView alloc] init];
-    tableview.frame = CGRectMake(0, searchBar.frame.origin.y + searchBar.frame.size.height, 320, 400);
+    tableview = [[UITableView alloc] init];
+    tableview.frame = CGRectMake(0, searchBar.frame.origin.y + searchBar.frame.size.height, 320, self.view.frame.size.height);
     tableview.tableHeaderView = imageview;
     tableview.delegate = self;
     tableview.dataSource = self;
     [self.view addSubview:searchBar];
     [self.view addSubview:tableview];
-    
+    /**
+     *  add refresh
+     */
+    if (_refreshTableView == nil) {
+        //初始化下拉刷新控件
+        EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - tableview.bounds.size.height, self.view.frame.size.width, tableview.bounds.size.height)];
+        refreshView.delegate = self;
+        [refreshView refreshLastUpdatedDate];
+        //将下拉刷新控件作为子控件添加到UITableView中
+        [tableview addSubview:refreshView];
+        _refreshTableView = refreshView;
+    }
     
     [waitload startAnimating];
     
@@ -105,6 +116,7 @@
         NSData *topnews = [completedOperation responseData];
         newsTitle = [[NSMutableArray alloc] init];
         newsContent = [[NSMutableArray alloc] init];
+        newsTime = [[NSMutableArray alloc] init];
         
         // return type id
         id data = [NSJSONSerialization JSONObjectWithData:topnews options:NSJSONReadingMutableContainers error:nil];
@@ -132,8 +144,15 @@
                     topnewsContent = [topnewsDict objectForKey:@"content"];
                     Model *model = [[Model alloc] initWithnewsTitle:topnewsTitle];
                     Model *content = [[Model alloc] initWithnewsContent:topnewsContent];
+                    
+                    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[topnewsDict objectForKey:@"addtime"] integerValue]];
+                    NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
+                    [dateformat setDateFormat:@"yyyy-MM-dd"];
+                    topnewstime = [dateformat stringFromDate:date];
+                    Model *time = [[Model alloc] initWithnewsTime:topnewstime];
                     [newsTitle addObject:model];
                     [newsContent addObject:content];
+                    [newsTime addObject:time];
 //                    NSLog(@"%@",topnewsTitle);
                     
                 }
@@ -149,7 +168,13 @@
                     if (title) {
 //                        NSLog(@"%@", title);
                         Model *model = [[Model alloc] initWithnewsTitle:title];
+                        NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[valueDict objectForKey:@"addtime"] integerValue]];
+                        NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
+                        [dateformat setDateFormat:@"yyyy-MM-dd"];
+                        NSString *datestr = [dateformat stringFromDate:date];
+                        Model *time = [[Model alloc] initWithnewsTime:datestr];
                         [newsTitle addObject:model];
+                        [newsTime addObject:time];
                     }
                     NSString *contents = [valueDict objectForKey:@"content"];
                     if (contents) {
@@ -186,7 +211,7 @@
     static NSString *cellname = @"newscell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellname];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellname];
 
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         cell.selectionStyle = UITableViewCellSeparatorStyleNone;
@@ -195,12 +220,14 @@
         UIImage *header = [UIImage imageNamed:@"HeaderIcon"];
         [cell.imageView setImage:header];
         cell.textLabel.text = ((Model *)[newsTitle objectAtIndex:indexPath.row]).newsTitle;
+        cell.detailTextLabel.text = ((Model *)[newsTime objectAtIndex:indexPath.row]).newsTime;
     } else {
         [cell.imageView setImage:nil];
     }
     
     
     cell.textLabel.text = ((Model *)[newsTitle objectAtIndex:indexPath.row]).newsTitle;
+    cell.detailTextLabel.text = ((Model *)[newsTime objectAtIndex:indexPath.row]).newsTime;
     
     return cell;
 }
@@ -266,17 +293,142 @@
         SearchResultViewController *srv = [[SearchResultViewController alloc] init];\
         srv.result = searchresult;
         [self.navigationController pushViewController:srv animated:YES];
-
-        
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         NSLog(@"error");
     }];
     [search enqueueOperation:sch];
+}
+/**
+ *  EGORefresh
+ *
+ */
+- (NSDate*)egoRefreshTableDataSourceLastUpdated:(UIView*)view
+{
+    return [NSDate date];
+}
+- (void)egoRefreshTableDidTriggerRefresh:(EGORefreshPos)aRefreshPos
+{
+     [self reloadTableViewDataSource];
+}
+- (BOOL)egoRefreshTableDataSourceIsLoading:(UIView*)view
+{
+    return _reloading;
+}
+
+//开始重新加载时调用的方法
+- (void)reloadTableViewDataSource{
+    _reloading = YES;
+    //开始刷新后执行后台线程，在此之前可以开启HUD或其他对UI进行阻塞
+    [NSThread detachNewThreadSelector:@selector(doInBackground) toTarget:self withObject:nil];
+}
+
+//完成加载时调用的方法
+- (void)doneLoadingTableViewData{
+    NSLog(@"doneLoadingTableViewData");
+    
+    _reloading = NO;
+    [_refreshTableView egoRefreshScrollViewDataSourceDidFinishedLoading:tableview];
+    //刷新表格内容
+    [tableview reloadData];
+}
+
+-(void)doInBackground
+{
+    NSLog(@"doInBackground");
     
     
+    MKNetworkEngine *getnews = [[MKNetworkEngine alloc] initWithHostName:@"www.zglyfzw.com/webapp/api" customHeaderFields:nil];
+    MKNetworkOperation *op = [getnews operationWithPath:@"index.php?page_no=1" params:nil httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        //        NSLog(@"%@",[completedOperation responseJSON]);
+        NSData *topnews = [completedOperation responseData];
+//        newsTitle = [[NSMutableArray alloc] init];
+//        newsContent = [[NSMutableArray alloc] init];
+        
+        // return type id
+        id data = [NSJSONSerialization JSONObjectWithData:topnews options:NSJSONReadingMutableContainers error:nil];
+        
+        // if data is type NSDictionary
+        if ([data isKindOfClass:[NSDictionary class]]) {
+            
+            NSDictionary *dataDict = (NSDictionary *)data;
+            
+            // if return msg is ok.get msg
+            NSString *message = [dataDict objectForKey:@"msg"];
+            if (![message isEqualToString:@"ok"]) {
+                return;
+            }
+            
+            // get data
+            NSDictionary *dataValue = dataDict[@"data"];
+            
+            // get all values of data
+            NSArray *topnews = [dataValue objectForKey:@"topnews"];
+            for (id topnewsDict in topnews) {
+                if ([topnewsDict isKindOfClass:[NSDictionary class]]) {
+                    
+                    topnewsTitle = [topnewsDict objectForKey:@"title"];
+                    topnewsContent = [topnewsDict objectForKey:@"content"];
+                    Model *model = [[Model alloc] initWithnewsTitle:topnewsTitle];
+                    Model *content = [[Model alloc] initWithnewsContent:topnewsContent];
+                    [newsTitle addObject:model];
+                    [newsContent addObject:content];
+                    //                    NSLog(@"%@",topnewsTitle);
+                    
+                }
+            }
+            NSArray *dataAllValues = [dataValue allValues];
+            
+            // for loop
+            for (id valueDict in dataAllValues) {
+                
+                if ([valueDict isKindOfClass:[NSDictionary class]]) {
+                    // get title
+                    NSString *title = valueDict[@"title"];
+                    if (title) {
+                        //                        NSLog(@"%@", title);
+                        Model *model = [[Model alloc] initWithnewsTitle:title];
+                        [newsTitle addObject:model];
+                    }
+                    NSString *contents = [valueDict objectForKey:@"content"];
+                    if (contents) {
+                        Model *content = [[Model alloc] initWithnewsContent:contents];
+                        [newsContent addObject:content];
+                    }
+                }
+            }
+            
+//            if (newsTitle.count > 0) {
+//                [tableview reloadData];
+//            }
+            [self performSelectorOnMainThread:@selector(doneLoadingTableViewData) withObject:nil waitUntilDone:YES];
+        }
+        
+        
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        NSLog(@"error");
+    }];
+    [getnews enqueueOperation:op];
     
+    
+    //后台操作线程执行完后，到主线程更新UI
     
 }
+//滚动控件的委托方法
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [_refreshTableView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [_refreshTableView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+/**
+ *  Button event
+ */
 
 - (void)didReceiveMemoryWarning
 {

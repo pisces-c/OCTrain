@@ -59,4 +59,13 @@
     }
     return self;
 }
+
+- (instancetype)initWithnewsTime :(NSString *)newsTime
+{
+    self = [super init];
+    if (self) {
+        _newsTime = newsTime;
+    }
+    return self;
+}
 @end

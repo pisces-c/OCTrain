@@ -17,11 +17,21 @@
     NSMutableArray *newsTitle;
     NSString *topnewsTitle;
     NSString *topnewsContent;
+    NSString *topnewstime;
     NSMutableArray *newsContent;
+    NSMutableArray *newsTime;
     NSMutableArray *searchresult;
+    NSString *searchTime;
+    UITableView *tableview;
+    
+    EGORefreshTableHeaderView *_refreshTableView;
+    BOOL _reloading;
 }
 
-
+//开始重新加载时调用的方法
+- (void)reloadTableViewDataSource;
+//完成加载时调用的方法
+- (void)doneLoadingTableViewData;
 
 
 @end

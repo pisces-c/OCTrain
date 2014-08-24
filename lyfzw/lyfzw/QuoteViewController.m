@@ -34,7 +34,7 @@
     newsContent = [NSMutableArray new];
     
     quoteTable = [[UITableView alloc] init];
-    quoteTable.frame = CGRectMake(0, 50, 320, 568-113);
+    quoteTable.frame = CGRectMake(0, 50, 320, self.view.frame.size.height);
     quoteTable.tableHeaderView.backgroundColor = [UIColor blackColor];
     quoteTable.delegate = self;
     quoteTable.dataSource = self;
@@ -78,6 +78,7 @@
                 }
                 UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:newsCatName];
                 segmentedControl.frame = CGRectMake(10, 70, 300, 40);
+                segmentedControl.backgroundColor = [UIColor whiteColor];
                 [segmentedControl addTarget:self action:@selector(clickCat:) forControlEvents:UIControlEventValueChanged];
                 [segmentedControl setSelectedSegmentIndex:0];
                 [self.view addSubview:segmentedControl];

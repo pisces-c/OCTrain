@@ -38,6 +38,7 @@
 		2388BDE2198C8C7100F809B0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2388BDC6198C8C7100F809B0 /* CoreData.framework */; };
 		2388BDEA198C8C7100F809B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2388BDE8198C8C7100F809B0 /* InfoPlist.strings */; };
 		2388BDEC198C8C7100F809B0 /* lyfzwTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2388BDEB198C8C7100F809B0 /* lyfzwTests.m */; };
+		239728AF19AA4784003806A6 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 239728AE19AA4784003806A6 /* blueArrow@2x.png */; };
 		23A899FB198FBBD500D2E695 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A899F9198FBBD500D2E695 /* LoginViewController.m */; };
 		23A899FC198FBBD500D2E695 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A899FA198FBBD500D2E695 /* LoginViewController.xib */; };
 		23A899FF198FE01C00D2E695 /* User_account_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A89A01198FE01C00D2E695 /* User_account_icon@2x.png */; };
@@ -97,7 +98,7 @@
 		233C98591993D0B10063ED63 /* QuoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteViewController.m; sourceTree = "<group>"; };
 		233C985B1993D0C30063ED63 /* ConsultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultViewController.h; sourceTree = "<group>"; };
 		233C985C1993D0C30063ED63 /* ConsultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultViewController.m; sourceTree = "<group>"; };
-		2388BDBD198C8C7100F809B0 /* lyfzw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lyfzw.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2388BDBD198C8C7100F809B0 /* 粮油发展网.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "粮油发展网.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2388BDC0198C8C7100F809B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2388BDC2198C8C7100F809B0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2388BDC4198C8C7100F809B0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -115,6 +116,7 @@
 		2388BDE7198C8C7100F809B0 /* lyfzwTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "lyfzwTests-Info.plist"; sourceTree = "<group>"; };
 		2388BDE9198C8C7100F809B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2388BDEB198C8C7100F809B0 /* lyfzwTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lyfzwTests.m; sourceTree = "<group>"; };
+		239728AE19AA4784003806A6 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueArrow@2x.png"; path = "../../../../Downloads/AOWaterView/AOWaterView/Resources/blueArrow@2x.png"; sourceTree = "<group>"; };
 		23A899F8198FBBD500D2E695 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		23A899F9198FBBD500D2E695 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		23A899FA198FBBD500D2E695 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -229,7 +231,7 @@
 		2388BDBE198C8C7100F809B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2388BDBD198C8C7100F809B0 /* lyfzw.app */,
+				2388BDBD198C8C7100F809B0 /* 粮油发展网.app */,
 				2388BDDD198C8C7100F809B0 /* lyfzwTests.xctest */,
 			);
 			name = Products;
@@ -330,6 +332,7 @@
 		23D88F77198E116700A1CEA6 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				239728AE19AA4784003806A6 /* blueArrow@2x.png */,
 				23D88F78198E118700A1CEA6 /* HeaderIcon.png */,
 				23D88F79198E118700A1CEA6 /* lyfzwIcon-h@2x.png */,
 				23D88F7A198E118700A1CEA6 /* lyfzwIcon.png */,
@@ -358,7 +361,7 @@
 			);
 			name = lyfzw;
 			productName = lyfzw;
-			productReference = 2388BDBD198C8C7100F809B0 /* lyfzw.app */;
+			productReference = 2388BDBD198C8C7100F809B0 /* 粮油发展网.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2388BDDC198C8C7100F809B0 /* lyfzwTests */ = {
@@ -416,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239728AF19AA4784003806A6 /* blueArrow@2x.png in Resources */,
 				2388BDCD198C8C7100F809B0 /* InfoPlist.strings in Resources */,
 				23D88F83198E118700A1CEA6 /* Pass_Word_Icon@2x.png in Resources */,
 				23A899FC198FBBD500D2E695 /* LoginViewController.xib in Resources */,
@@ -597,7 +601,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lyfzw/lyfzw-Prefix.pch";
 				INFOPLIST_FILE = "lyfzw/lyfzw-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "粮油发展网";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -610,7 +614,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "lyfzw/lyfzw-Prefix.pch";
 				INFOPLIST_FILE = "lyfzw/lyfzw-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "粮油发展网";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

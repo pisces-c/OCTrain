@@ -44,6 +44,7 @@
 
     newsCatname = [[NSMutableArray alloc] init];
     newsTitle = [[NSMutableArray alloc] init];
+    newsTime = [[NSMutableArray alloc] init];
     
     MKNetworkEngine *getConsult = [[MKNetworkEngine alloc] initWithHostName:@"www.zglyfzw.com/webapp/api/" customHeaderFields:nil];
     MKNetworkOperation *op = [getConsult operationWithPath:@"category.php?type=1" params:nil httpMethod:@"GET"];
@@ -85,6 +86,7 @@
                 
                 UISegmentedControl *catName = [[UISegmentedControl alloc] initWithItems:names];
                 catName.frame = CGRectMake(10, 70, 300, 40);
+                catName.backgroundColor = [UIColor whiteColor];
                 [catName addTarget:self action:@selector(clickCat:) forControlEvents:UIControlEventValueChanged];
                 [catName setSelectedSegmentIndex:0];
                 catName.selectedSegmentIndex = (NSInteger)newsCatId;
@@ -114,13 +116,14 @@
     static NSString *cellname = @"consultcell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellname];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellname];
         
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     }
 //    cell.textLabel.text = (Model *)([newsCat objectAtIndex:indexPath.row]).newsTitle;
     cell.textLabel.text =  [newsTitle objectAtIndex:indexPath.row];//((Model *)).newsTitle;
+    cell.detailTextLabel.text = ((Model *)[newsTime objectAtIndex:indexPath.row]).newsTime;
     return cell;
 }
 
@@ -169,9 +172,14 @@
                     if ([catValuesDict isKindOfClass:[NSDictionary class]]) {
                         NSString *catname = [catValuesDict objectForKey:@"title"];
                         if (catname) {
+                            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[catValuesDict objectForKey:@"addtime"] integerValue]];
+                            NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
+                            [dateformat setDateFormat:@"yyyy-MM-dd"];
+                            NSString *datestr = [dateformat stringFromDate:date];
+                            Model *time = [[Model alloc] initWithnewsTime:datestr];
                             Model *model = [[Model alloc] initWithnewsTitle:catname];
                             [newsTitle addObject:model.newsTitle];
-                            
+                            [newsTime addObject:time];
                         }
                         NSString *content = [catValuesDict objectForKey:@"content"];
                         if (newsContent) {
