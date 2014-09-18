@@ -5,15 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E38FE371-3090-4BDF-A0AF-C30242BC883D</string>
+	<string>7CFA0932-09E1-41AC-B3BE-30883E2C0E2D</string>
 	<key>IDESourceControlProjectName</key>
 	<string>lyfzw</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>33353EEF-F38F-410B-BC53-44C24DDF9220</key>
 		<string>https://github.com/pisces-c/OCTrain.git</string>
-		<key>F7E18DC4-E905-4C7F-A75E-8BCB032DB3AF</key>
-		<string>git://github.com/AFNetworking/AFNetworking.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>lyfzw/lyfzw.xcodeproj/project.xcworkspace</string>
@@ -21,8 +19,6 @@
 	<dict>
 		<key>33353EEF-F38F-410B-BC53-44C24DDF9220</key>
 		<string>../../..</string>
-		<key>F7E18DC4-E905-4C7F-A75E-8BCB032DB3AF</key>
-		<string>../../MKNetworkKit/MKNetworkKit-Tests/External/OHHTTPStubs/OHHTTPStubs/UnitTests/AFNetworking</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/pisces-c/OCTrain.git</string>
@@ -32,14 +28,6 @@
 	<string>33353EEF-F38F-410B-BC53-44C24DDF9220</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F7E18DC4-E905-4C7F-A75E-8BCB032DB3AF</string>
-			<key>IDESourceControlWCCName</key>
-			<string>AFNetworking</string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
