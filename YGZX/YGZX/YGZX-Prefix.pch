@@ -14,13 +14,4 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
-    #import "MKNetworkKit.h"
-#endif
-
-#ifdef __OBJC__
-    #import "/Applications/Objective-C++.app/Contents/Resources/IncludeV5.1.1/Foundation++.h"
-#endif
-
-#ifdef __OBJC__
-    #import "/Applications/Objective-C++.app/Contents/Resources/IncludeV5.1.1/Foundation++.h"
 #endif
