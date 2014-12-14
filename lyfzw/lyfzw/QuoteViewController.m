@@ -108,7 +108,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellname];
         
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     cell.textLabel.text = newTitle[indexPath.row];

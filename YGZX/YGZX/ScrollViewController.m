@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 成城. All rights reserved.
 //
 
-#import "ScollViewController.h"
+#import "ScrollViewController.h"
 
-@interface ScollViewController ()
+@interface ScrollViewController ()
 
 @end
 
-@implementation ScollViewController
+@implementation ScrollViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +27,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+	UIWebView *newsinfo = [[UIWebView alloc] init];
+	newsinfo.frame = CGRectMake(0, 0, 320, 900);
+	[self.view addSubview:newsinfo];
+	
 }
 
 - (void)didReceiveMemoryWarning

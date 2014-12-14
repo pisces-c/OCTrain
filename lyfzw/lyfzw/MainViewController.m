@@ -214,7 +214,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellname];
 
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == 0) {
         UIImage *header = [UIImage imageNamed:@"HeaderIcon"];

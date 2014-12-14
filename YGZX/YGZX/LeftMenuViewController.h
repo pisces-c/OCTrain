@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MMDrawerController.h"
 
-@interface LeftMenuViewController : UIViewController
+@interface LeftMenuViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end

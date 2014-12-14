@@ -97,24 +97,14 @@
 		233C98581993D0B10063ED63 /* QuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteViewController.h; sourceTree = "<group>"; };
 		233C98591993D0B10063ED63 /* QuoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; explicitFileType = sourcecode.cpp.objcpp; path = QuoteViewController.m; sourceTree = "<group>"; };
 		233C985B1993D0C30063ED63 /* ConsultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultViewController.h; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		233C985C1993D0C30063ED63 /* ConsultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; explicitFileType = sourcecode.cpp.objcpp; path = ConsultViewController.m; sourceTree = "<group>"; };
-		2388BDBD198C8C7100F809B0 /* lyfzw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lyfzw.app; sourceTree = BUILT_PRODUCTS_DIR; };
-=======
 		233C985C1993D0C30063ED63 /* ConsultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultViewController.m; sourceTree = "<group>"; };
 		2388BDBD198C8C7100F809B0 /* 粮油发展网.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "粮油发展网.app"; sourceTree = BUILT_PRODUCTS_DIR; };
->>>>>>> eb1716399b807e79672f4dfc0132b4967f881c71
 		2388BDC0198C8C7100F809B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2388BDC2198C8C7100F809B0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2388BDC4198C8C7100F809B0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2388BDC6198C8C7100F809B0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2388BDCA198C8C7100F809B0 /* lyfzw-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "lyfzw-Info.plist"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		2388BDCC198C8C7100F809B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2388BDCE198C8C7100F809B0 /* main.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = main.m; sourceTree = "<group>"; };
-=======
 		2388BDCE198C8C7100F809B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
->>>>>>> eb1716399b807e79672f4dfc0132b4967f881c71
 		2388BDD0198C8C7100F809B0 /* lyfzw-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lyfzw-Prefix.pch"; sourceTree = "<group>"; };
 		2388BDD1198C8C7100F809B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2388BDD2198C8C7100F809B0 /* AppDelegate.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -124,9 +114,6 @@
 		2388BDDE198C8C7100F809B0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2388BDE7198C8C7100F809B0 /* lyfzwTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "lyfzwTests-Info.plist"; sourceTree = "<group>"; };
 		2388BDE9198C8C7100F809B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		2388BDEB198C8C7100F809B0 /* lyfzwTests.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = lyfzwTests.m; sourceTree = "<group>"; };
-=======
 		2388BDEB198C8C7100F809B0 /* lyfzwTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lyfzwTests.m; sourceTree = "<group>"; };
 		239728AE19AA4784003806A6 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueArrow@2x.png"; path = "../../../../Downloads/AOWaterView/AOWaterView/Resources/blueArrow@2x.png"; sourceTree = "<group>"; };
 		239728EF19AA58B6003806A6 /* User_account_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "User_account_icon@2x.png"; sourceTree = "<group>"; };
@@ -136,7 +123,6 @@
 		239728F519AA5974003806A6 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		239728F619AA5974003806A6 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		239728F719AA5974003806A6 /* EGOViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOViewCommon.h; sourceTree = "<group>"; };
->>>>>>> eb1716399b807e79672f4dfc0132b4967f881c71
 		23A899F8198FBBD500D2E695 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		23A899F9198FBBD500D2E695 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; explicitFileType = sourcecode.cpp.objcpp; path = LoginViewController.m; sourceTree = "<group>"; };
 		23A899FA198FBBD500D2E695 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -145,16 +131,7 @@
 		23BFFCBD199BB5CA008587C6 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		23BFFCBE199BB5CA008587C6 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; explicitFileType = sourcecode.cpp.objcpp; path = InfoViewController.m; sourceTree = "<group>"; };
 		23D3AF1019A0E31500980CB1 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		23D3AF1119A0E31500980CB1 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; explicitFileType = sourcecode.cpp.objcpp; path = SearchResultViewController.m; sourceTree = "<group>"; };
-		23D3AF1B19A0FA0300980CB1 /* EGORefreshTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGORefreshTableFooterView.h; path = ../../../downloadCode/AOWaterView/AOWaterView/EGO/EGORefreshTableFooterView.h; sourceTree = "<group>"; };
-		23D3AF1C19A0FA0300980CB1 /* EGORefreshTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; explicitFileType = sourcecode.cpp.objcpp; name = EGORefreshTableFooterView.m; path = ../../../downloadCode/AOWaterView/AOWaterView/EGO/EGORefreshTableFooterView.m; sourceTree = "<group>"; };
-		23D3AF1D19A0FA0300980CB1 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGORefreshTableHeaderView.h; path = ../../../downloadCode/AOWaterView/AOWaterView/EGO/EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		23D3AF1E19A0FA0300980CB1 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; explicitFileType = sourcecode.cpp.objcpp; name = EGORefreshTableHeaderView.m; path = ../../../downloadCode/AOWaterView/AOWaterView/EGO/EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
-		23D3AF1F19A0FA0300980CB1 /* EGOViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EGOViewCommon.h; path = ../../../downloadCode/AOWaterView/AOWaterView/EGO/EGOViewCommon.h; sourceTree = "<group>"; };
-=======
 		23D3AF1119A0E31500980CB1 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
->>>>>>> eb1716399b807e79672f4dfc0132b4967f881c71
 		23D88F6A198E08D600A1CEA6 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		23D88F6B198E08D600A1CEA6 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; explicitFileType = sourcecode.cpp.objcpp; path = MainViewController.m; sourceTree = "<group>"; };
 		23D88F72198E10A300A1CEA6 /* RegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegViewController.h; sourceTree = "<group>"; };

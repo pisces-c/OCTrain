@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "LeftMenuViewController.h"
+#import "RightMenuViewController.h"
+#import "MMDrawerController/MMDrawerController.h"
+
 
 @implementation AppDelegate
 
@@ -22,10 +26,23 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
 	
-	MainViewController *mainview = [[MainViewController alloc] init];
-	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainview];
+	UIViewController *centerVC = [[MainViewController alloc] init];
+	UIViewController *leftVC = [[LeftMenuViewController alloc] init];
+	UIViewController *rightVC = [[RightMenuViewController alloc] init];
 	
-	self.window.rootViewController = nav;
+	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:centerVC];
+	
+	MMDrawerController *mm = [[MMDrawerController alloc] initWithCenterViewController: nav leftDrawerViewController:leftVC rightDrawerViewController:rightVC];
+	
+	[mm setMaximumLeftDrawerWidth:180];
+    [mm setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [mm setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+	[mm setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+		MMDrawerControllerDrawerVisualStateBlock block;
+		block = [MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0];
+		block(drawerController,drawerSide,percentVisible);
+	}];
+	self.window.rootViewController = mm;
 	
 	
 	
