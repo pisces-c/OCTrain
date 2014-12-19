@@ -19,8 +19,8 @@
 	manager.responseSerializer = [AFJSONResponseSerializer serializer];
 	[manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		if ([responseObject isKindOfClass:[NSArray class]]) {
-			NSLog(@"%@",responseObject);
-			_newscatalogs = [[NSArray alloc] init];
+//			NSLog(@"%@",responseObject);
+			_newscatalogs = [[NSMutableArray alloc] init];
 			_newscatalogs = responseObject;
 			
 		}
@@ -37,13 +37,15 @@
 }
 
 -(void)GetLastestNewsOfCatalog:(NSString *)catalogID {
-	NSString *url = @"http://218.56.32.108/online-api/article/latest?catalogId=?";
+	NSString *para = catalogID;
+	NSString *url1 = @"http://218.56.32.108/online-api/article/latest?catalogId=";
+	NSString *url = [url1 stringByAppendingString:para];
 	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 	manager.responseSerializer = [AFJSONResponseSerializer serializer];
-	[manager GET:url parameters:catalogID success:^(AFHTTPRequestOperation *operation, id responseObject) {
+	[manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		if ([responseObject isKindOfClass:[NSArray class]]) {
 			NSLog(@"%@",responseObject);
-			_articles = [[NSArray alloc] init];
+			_articles = [[NSMutableArray alloc] init];
 			_articles = responseObject;
 			
 		}
@@ -75,27 +77,20 @@
 		for (int i=0; i<[arr count]; i++) {
 			NSDictionary *dict = [[NSDictionary alloc] init];
 			dict = [arr objectAtIndex:i];
-//			_newscatalogID = [_newscatalogID arrayByAddingObject:[dict objectForKey:@"id"]];
-//			_newscatalogName = [_newscatalogName arrayByAddingObject:[dict objectForKey:@"name"]];
-			
-			
-			// TODO
 			[_newscatalogID addObject:[dict objectForKey:@"id"]];
 			[_newscatalogName addObject:[dict objectForKey:@"name"]];
-//			if ([[dict objectForKey:@"module"] isEqual:@"article"]) {
-//				_newsID = [_newsID arrayByAddingObject:[dict objectForKey:@"id"]];
-//				_newsTitle = [_newsTitle arrayByAddingObject:[dict objectForKey:@"title"]];
-//			}
 			
+			if ([[dict objectForKey:@"module"] isEqualToString:@"articles"]) {
+				[_newsTitle addObject:[dict objectForKey:@"title"]];
+			}
 		}
 		
 		if (_delegate) {
 			if ([_delegate respondsToSelector:@selector(didUpdatedCatalogs:)]) {
 				[_delegate analysisCatalogsdatafromNet:_newscatalogID :_newscatalogName];
+			} else if ([_delegate respondsToSelector:@selector(didUpdatedArticles:)]) {
+				[_delegate analysisArticlesdatafromNet:_newsID :_newsTitle];
 			}
-			//				} else if ([_delegate respondsToSelector:@selector(didUpdatedCatalogs:)]) {
-			//					[_delegate analysisArticlesdatafromNet:_newsID :_newsTitle];
-			//				}
 		}
 	}
 }

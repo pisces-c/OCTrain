@@ -19,6 +19,7 @@
 	NSArray *buttonName;
 	NSArray *catalogs;
 	NSArray *catalogID;
+	NSArray *news;
 	NSArray *newsID;
 	NSArray *newsTitle;
 	

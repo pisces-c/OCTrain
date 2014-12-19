@@ -11,7 +11,6 @@
 		2321EBDF1A405FE700F21DD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2321EBDE1A405FE700F21DD9 /* AppDelegate.m */; };
 		2321EBE21A405FE700F21DD9 /* YGZX_NEW.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2321EBE01A405FE700F21DD9 /* YGZX_NEW.xcdatamodeld */; };
 		2321EBE51A405FE700F21DD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2321EBE41A405FE700F21DD9 /* ViewController.m */; };
-		2321EBE81A405FE700F21DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2321EBE61A405FE700F21DD9 /* Main.storyboard */; };
 		2321EBEA1A405FE700F21DD9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2321EBE91A405FE700F21DD9 /* Images.xcassets */; };
 		2321EBED1A405FE700F21DD9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2321EBEB1A405FE700F21DD9 /* LaunchScreen.xib */; };
 		2321EBF91A405FE700F21DD9 /* YGZX_NEWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2321EBF81A405FE700F21DD9 /* YGZX_NEWTests.m */; };
@@ -40,6 +39,7 @@
 		2321EC4C1A40613800F21DD9 /* RightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2321EC4B1A40613800F21DD9 /* RightMenuViewController.m */; };
 		2321EC4F1A4068AE00F21DD9 /* Views.m in Sources */ = {isa = PBXBuildFile; fileRef = 2321EC4E1A4068AE00F21DD9 /* Views.m */; };
 		2321EC551A41E41900F21DD9 /* Net.m in Sources */ = {isa = PBXBuildFile; fileRef = 2321EC541A41E41900F21DD9 /* Net.m */; };
+		2321EC581A430BC500F21DD9 /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2321EC571A430BC500F21DD9 /* HttpManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,6 @@
 		2321EBE11A405FE700F21DD9 /* YGZX_NEW.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YGZX_NEW.xcdatamodel; sourceTree = "<group>"; };
 		2321EBE31A405FE700F21DD9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2321EBE41A405FE700F21DD9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		2321EBE71A405FE700F21DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2321EBE91A405FE700F21DD9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2321EBEC1A405FE700F21DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2321EBF21A405FE700F21DD9 /* YGZX_NEWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YGZX_NEWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +118,8 @@
 		2321EC4E1A4068AE00F21DD9 /* Views.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Views.m; sourceTree = "<group>"; };
 		2321EC531A41E41900F21DD9 /* Net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Net.h; sourceTree = "<group>"; };
 		2321EC541A41E41900F21DD9 /* Net.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Net.m; sourceTree = "<group>"; };
+		2321EC561A430BC500F21DD9 /* HttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpManager.h; sourceTree = "<group>"; };
+		2321EC571A430BC500F21DD9 /* HttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +174,8 @@
 				2321EC4B1A40613800F21DD9 /* RightMenuViewController.m */,
 				2321EC4D1A4068AE00F21DD9 /* Views.h */,
 				2321EC4E1A4068AE00F21DD9 /* Views.m */,
-				2321EBE61A405FE700F21DD9 /* Main.storyboard */,
+				2321EC561A430BC500F21DD9 /* HttpManager.h */,
+				2321EC571A430BC500F21DD9 /* HttpManager.m */,
 				2321EBE91A405FE700F21DD9 /* Images.xcassets */,
 				2321EBEB1A405FE700F21DD9 /* LaunchScreen.xib */,
 				2321EBE01A405FE700F21DD9 /* YGZX_NEW.xcdatamodeld */,
@@ -363,7 +365,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2321EBE81A405FE700F21DD9 /* Main.storyboard in Resources */,
 				2321EBED1A405FE700F21DD9 /* LaunchScreen.xib in Resources */,
 				2321EBEA1A405FE700F21DD9 /* Images.xcassets in Resources */,
 			);
@@ -398,6 +399,7 @@
 				2321EC1C1A40602C00F21DD9 /* AFURLConnectionOperation.m in Sources */,
 				2321EC361A40604300F21DD9 /* UIImageView+AFNetworking.m in Sources */,
 				2321EC451A40605600F21DD9 /* MMDrawerVisualState.m in Sources */,
+				2321EC581A430BC500F21DD9 /* HttpManager.m in Sources */,
 				2321EC461A40605600F21DD9 /* UIViewController+MMDrawerController.m in Sources */,
 				2321EC171A40602C00F21DD9 /* AFHTTPRequestOperation.m in Sources */,
 				2321EC331A40604300F21DD9 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -434,14 +436,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2321EBE61A405FE700F21DD9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2321EBE71A405FE700F21DD9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2321EBEB1A405FE700F21DD9 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

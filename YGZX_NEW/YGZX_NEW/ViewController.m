@@ -17,9 +17,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-//	net = [[Net alloc] init];
-//	net.delegate = self;
-//	[net GetNewsCatalogs];
+//	CGFloat h = self.navigationController.navigationBar.frame.size.height;
 	MMDrawerBarButtonItem *leftbutton = [[MMDrawerBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickleftbutton:)];
 	MMDrawerBarButtonItem *rightbutton = [[MMDrawerBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickrightbutton:)];
 	self.navigationItem.leftBarButtonItem = leftbutton;
@@ -28,22 +26,10 @@
 	
 	
 	ygViews = [[Views alloc] init];
-	ygViews.frame = CGRectMake(0, 0, 1280, 960);
-	[self.view addSubview:ygViews];
+	ygViews.frame = CGRectMake(0, 0, 320, 480);
+	[self.navigationController.view addSubview:ygViews];
 	
 }
-
-//-(void)didUpdatedNewsCatalogs:(NSArray *)newscatalogs {
-//	catalogs = newscatalogs;
-//	[net WillAnaLysiNetData:catalogs];
-//}
-//
-//-(void)analysisCatalogsdatafromNet:(NSArray *)newscatalogID :(NSArray *)newscatalogName {
-//	buttonName = newscatalogName;
-//	[ygViews refreshtablelist];
-//}
-
-
 
 - (void)clickleftbutton:(id)sender {
 	[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];

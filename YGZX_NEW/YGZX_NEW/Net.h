@@ -24,12 +24,12 @@
 
 @interface Net : NSObject
 @property (strong, nonatomic) id<NetDelegate> delegate;
-@property (retain ,atomic) NSArray *newscatalogs;
+@property (retain ,atomic) NSMutableArray *newscatalogs;
 @property (retain ,atomic) NSMutableArray *newscatalogID;
 @property (retain ,atomic) NSMutableArray *newscatalogName;
-@property (retain ,atomic) NSArray *articles;
-@property (retain ,atomic) NSArray *newsID;
-@property (retain ,atomic) NSArray *newsTitle;
+@property (retain ,atomic) NSMutableArray *articles;
+@property (retain ,atomic) NSMutableArray *newsID;
+@property (retain ,atomic) NSMutableArray *newsTitle;
 @property (retain ,atomic) NSMutableArray *headnews;
 @property (retain ,atomic) NSMutableArray *newsdetail;
 /**
