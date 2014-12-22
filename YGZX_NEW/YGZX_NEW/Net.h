@@ -18,7 +18,7 @@
 - (void)didUpdatedCatalogs:(NSArray *)newscatalogs;
 - (void)didUpdatedArticles:(NSArray *)articles;
 - (void)analysisCatalogsdatafromNet:(NSArray *)newscatalogID :(NSArray *)newscatalogName;
-- (void)analysisArticlesdatafromNet:(NSArray *)articlesID :(NSArray *)articlesTitle;
+- (void)analysisArticlesdatafromNet:(NSArray *)articlesID :(NSArray *)articlesTitle :(NSArray *)articlesContent;
 
 @end
 
@@ -65,7 +65,7 @@
  *
  *  @param arr 取回的结果是数组
  */
--(void)WillAnaLysiNetData:(NSArray *)arr;
-
+-(void)WillAnaLysiCatalogsData:(NSArray *)arr;
+-(void)WillAnaLysiArticlesData:(NSArray *)arr;
 
 @end

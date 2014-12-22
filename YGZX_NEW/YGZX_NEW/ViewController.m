@@ -11,9 +11,7 @@
 @interface ViewController ()
 
 @end
-
 @implementation ViewController
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
@@ -23,14 +21,10 @@
 	self.navigationItem.leftBarButtonItem = leftbutton;
 	self.navigationItem.rightBarButtonItem = rightbutton;
 	
-	
-	
 	ygViews = [[Views alloc] init];
 	ygViews.frame = CGRectMake(0, 0, 320, 480);
-	[self.navigationController.view addSubview:ygViews];
-	
+	[self.view addSubview:ygViews];
 }
-
 - (void)clickleftbutton:(id)sender {
 	[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }

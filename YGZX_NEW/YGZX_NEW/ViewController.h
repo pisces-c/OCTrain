@@ -12,7 +12,7 @@
 #import "MMDrawerBarButtonItem.h"
 #import "Net.h"
 
-@interface ViewController : UIViewController <NetDelegate>
+@interface ViewController : UIViewController <NetDelegate ,UITableViewDelegate>
 {
 	Views *ygViews;
 	Net *net;
@@ -21,6 +21,8 @@
 	NSArray *catalogID;
 	NSArray *newsID;
 	NSArray *newsTitle;
+	UIScrollView *imageView;
+	UITableView *newsList;
 }
 
 @end

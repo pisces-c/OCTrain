@@ -7,6 +7,11 @@
 //
 
 #import "Views.h"
+#import "HttpManager.h"
+
+@interface Views () <HttpManagerDelegate>
+
+@end
 
 @implementation Views
 
@@ -16,7 +21,7 @@
 	if (self) {
 		buttonView = [[UIScrollView alloc] init];
 		imageView = [[UIScrollView alloc] init];
-		tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 108, 320, 416) style:UITableViewStylePlain];
+		newsList = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, 320, 416) style:UITableViewStylePlain];
 		
 		buttonView.frame = CGRectMake(0, 64, 320, 44);
 		buttonView.contentOffset = CGPointMake(0, 0);
@@ -29,27 +34,39 @@
 		buttonView.backgroundColor = [UIColor whiteColor];
 		imageView.backgroundColor = [UIColor redColor];
 		
+		newsDetail = [[UIWebView alloc] init];
+		newsDetail.frame = CGRectMake(0, 64, 320, 480);
+//		backBar = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStyleDone target:self action:@selector(clickBackButton:)];
 		
-		tableView.tableHeaderView = imageView;
+		newsList.tableHeaderView = imageView;
 		
-		[self addSubview:tableView];
+		[self addSubview:newsList];
 		[self addSubview:buttonView];
 		
 		buttonView.delegate = self;
-		tableView.delegate = self;
-		tableView.dataSource = self;
+		newsList.delegate = self;
+		newsList.dataSource = self;
 		imageView.delegate = self;
 		
 		net = [[Net alloc] init];
 		net.delegate = self;
 		[net GetNewsCatalogs];
+		
+//		HttpManager *http = [[HttpManager alloc] init];
+//		http.delegate = self;
+//		[http startHttpRequestWithType:GetNewsCatalogs infos:nil];
 	}
 	return self;
 }
+
+- (void)didUpdateCatalogs:(HttpType)type infos:(NSDictionary *)catalogs {
+	
+}
+
 -(void)didUpdatedCatalogs:(NSArray *)newscatalogs {
 	catalogs = [[NSArray alloc] init];
 	catalogs = newscatalogs;
-	[net WillAnaLysiNetData:catalogs];
+	[net WillAnaLysiCatalogsData:catalogs];
 }
 -(void)analysisCatalogsdatafromNet:(NSArray *)newscatalogID :(NSArray *)newscatalogName {
 	buttonName = [[NSArray alloc] init];
@@ -72,19 +89,18 @@
 	NSLog(@"%ld",(long)[sender tag]);
 	switch ((long)[sender tag]) {
 	case 1:
-			net.delegate = self;
 			[net GetLastestNewsOfCatalog:[catalogID objectAtIndex:0]];
 			break;
 	case 2:
 			[net GetLastestNewsOfCatalog:[catalogID objectAtIndex:1]];
 			break;
 	case 3:
-		[net GetLastestNewsOfCatalog:[catalogID objectAtIndex:2]];
-		break;
+			[net GetLastestNewsOfCatalog:[catalogID objectAtIndex:2]];
+			break;
 	case 4:
-		[net GetLastestNewsOfCatalog:[catalogID objectAtIndex:3]];
-		break;
-  default:
+			[net GetLastestNewsOfCatalog:[catalogID objectAtIndex:3]];
+			break;
+   default:
 			break;
 	}
 }
@@ -92,16 +108,20 @@
 -(void)didUpdatedArticles:(NSArray *)articles {
 	news = [[NSArray alloc] init];
 	news = articles;
-	[net WillAnaLysiNetData:articles];
+	[net WillAnaLysiArticlesData:articles];
 }
--(void)analysisArticlesdatafromNet:(NSArray *)articlesID :(NSArray *)articlesTitle {
+-(void)analysisArticlesdatafromNet:(NSArray *)articlesID :(NSArray *)articlesTitle :(NSArray *)articlesContent{
 	newsID = [[NSArray alloc] init];
+	newsTitle = [[NSArray alloc] init];
+	newsContent = [[NSArray alloc] init];
 	newsID = articlesID;
 	newsTitle = articlesTitle;
+	newsContent = articlesContent;
+	[newsList reloadData];
 }
--(void)refreshtablelist {
-	[tableView reloadData];
-}
+//-(void)refreshtablelist {
+//	[newsList reloadData];
+//}
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -109,12 +129,21 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *cellname = @"cell";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname];
+	UITableViewCell *cell = [newsList dequeueReusableCellWithIdentifier:cellname];
 	if (!cell) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellname];
 	}
 	cell.textLabel.text = [newsTitle objectAtIndex:indexPath.row];
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//	[self addSubview:backBar];
+	[newsDetail loadHTMLString:[newsContent objectAtIndex:indexPath.row] baseURL:nil];
+	[self addSubview:newsDetail];
+}
+- (void)clickBackButton:(id)sender {
+	
 }
 
 @end

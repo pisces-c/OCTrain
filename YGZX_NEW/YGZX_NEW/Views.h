@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "Net.h"
+#import "HttpManager.h"
+
 @interface Views : UIView <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, NetDelegate>
 {
 	UIScrollView *scrollView;
 	UIScrollView *buttonView;
 	UIScrollView *imageView;
-	UITableView *tableView;
+	UITableView *newsList;
+	UIWebView *newsDetail;
+	UIBarButtonItem *backBar;
 	Net *net;
+	HttpManager *httpmanager;
 	
 	NSArray *buttonName;
 	NSArray *catalogs;
@@ -22,7 +27,9 @@
 	NSArray *news;
 	NSArray *newsID;
 	NSArray *newsTitle;
+	NSArray *newsContent;
 	
 }
 -(void)refreshtablelist;
+-(void)presentViews;
 @end
