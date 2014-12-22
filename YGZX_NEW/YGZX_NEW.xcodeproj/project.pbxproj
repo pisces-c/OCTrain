@@ -40,6 +40,7 @@
 		2321EC4F1A4068AE00F21DD9 /* Views.m in Sources */ = {isa = PBXBuildFile; fileRef = 2321EC4E1A4068AE00F21DD9 /* Views.m */; };
 		2321EC551A41E41900F21DD9 /* Net.m in Sources */ = {isa = PBXBuildFile; fileRef = 2321EC541A41E41900F21DD9 /* Net.m */; };
 		2321EC581A430BC500F21DD9 /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2321EC571A430BC500F21DD9 /* HttpManager.m */; };
+		237682D01A4872F600E81B07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237682CF1A4872F600E81B07 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		2321EC541A41E41900F21DD9 /* Net.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Net.m; sourceTree = "<group>"; };
 		2321EC561A430BC500F21DD9 /* HttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpManager.h; sourceTree = "<group>"; };
 		2321EC571A430BC500F21DD9 /* HttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpManager.m; sourceTree = "<group>"; };
+		237682CF1A4872F600E81B07 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				2321EC571A430BC500F21DD9 /* HttpManager.m */,
 				2321EBE91A405FE700F21DD9 /* Images.xcassets */,
 				2321EBEB1A405FE700F21DD9 /* LaunchScreen.xib */,
+				237682CF1A4872F600E81B07 /* Main.storyboard */,
 				2321EBE01A405FE700F21DD9 /* YGZX_NEW.xcdatamodeld */,
 				2321EBD91A405FE700F21DD9 /* Supporting Files */,
 			);
@@ -365,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237682D01A4872F600E81B07 /* Main.storyboard in Resources */,
 				2321EBED1A405FE700F21DD9 /* LaunchScreen.xib in Resources */,
 				2321EBEA1A405FE700F21DD9 /* Images.xcassets in Resources */,
 			);
